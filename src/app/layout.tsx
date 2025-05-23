@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import "@/styles/font.css";
+import ProviderReactQuery from "@/react-query/ProviderReactQuery";
 //import NavbarComponent from "@/components/Navbar/NavbarComponent";
 
 export const metadata: Metadata = {
@@ -27,7 +28,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="open-sans-regular">{children}</body>
+      <body className="open-sans-regular">
+        <ProviderReactQuery>{children}</ProviderReactQuery>
+      </body>
     </html>
   );
 }

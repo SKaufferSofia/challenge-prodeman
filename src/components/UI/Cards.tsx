@@ -37,7 +37,7 @@ export const CardsComponent = ({ title, description, img }: ICardsProps) => {
         )}
 
         <div className="flex justify-between items-center">
-          <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md">
+          <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md font-bold">
             Ver más
           </Button>
 
