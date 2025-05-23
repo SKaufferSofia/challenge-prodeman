@@ -1,6 +1,26 @@
 @import "tailwindcss";
 
-:root {
+@theme {
+  --color-background: #e5e1e0;
+  --color-background-dark: #252525;
+  --color-textPrimary: #191919;
+  --color-textPrimary-dark: #ededed;
+  --color-redPrimary: #ec1d24;
+  --color-secondaryWhite: #f9f9f9;
+  --color-secondaryBlack: #151515;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply bg-background dark:bg-background-dark text-textPrimary dark:text-textPrimary-dark;
+}
+
+.margenes {
+  @apply md:mx-20 sm:mx-10 mx-5;
+}
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,4 +43,4 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
