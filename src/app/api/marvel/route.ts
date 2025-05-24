@@ -5,12 +5,44 @@ const hash = "7034f53029aec1c396828144ed6c27ac";
 
 export async function GET(req: NextRequest) {
   const ts = "1";
-
   const { searchParams } = new URL(req.url);
-  const category = searchParams.get("category");
-  console.log("category", category);
 
-  const url = `https://gateway.marvel.com/v1/public/${category}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const category = searchParams.get("category");
+  const limit = searchParams.get("limit") || "20";
+  const offset = searchParams.get("offset") || "0";
+  const search = searchParams.get("search");
+  const modifiedSince = searchParams.get("modifiedSince");
+
+  if (!category) {
+    return NextResponse.json(
+      { message: "Falta el parámetro 'category'" },
+      { status: 400 }
+    );
+  }
+
+  // Construimos la query string correctamente
+  const queryParams = new URLSearchParams();
+  queryParams.set("limit", limit);
+  queryParams.set("offset", offset);
+  queryParams.set("ts", ts);
+  queryParams.set("apikey", publicKey);
+  queryParams.set("hash", hash);
+
+  if (modifiedSince) {
+    queryParams.set("modifiedsince", modifiedSince);
+  }
+
+  // Si hay un término de búsqueda, lo agregamos dependiendo de la categoría
+  if (search) {
+    if (category === "characters") {
+      queryParams.set("nameStartsWith", search);
+    } else {
+      queryParams.set("titleStartsWith", search);
+    }
+  }
+
+  const url = `https://gateway.marvel.com/v1/public/${category}?${queryParams.toString()}`;
+  console.log("Marvel API URL:", url);
 
   try {
     const response = await fetch(url);

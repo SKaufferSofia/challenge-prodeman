@@ -31,3 +31,13 @@ export interface IDataMarvel {
   count: number;
   results: MarvelItem[];
 }
+
+export interface ICharacterFront {
+  id: number;
+  name: string;
+  description: string;
+  modified: string;
+  img: string;
+  urlId: string;
+  favorite: boolean;
+}

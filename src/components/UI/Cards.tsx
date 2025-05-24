@@ -23,14 +23,19 @@ export const CardsComponent = ({ title, description, img }: ICardsProps) => {
         height={1000}
         className="w-full aspect-square object-cover transition-all duration-300 md:group-hover:blur-[1px] "
       />
+      {/* <Button className="rounded-full group-hover:opacity-0 absolute top-2 right-2 p-2 text-textPrimary-dark bg-background-dark translation-all duration-200 hover:scale-110 hover:bg-redPrimary">
+        <FaHeart className="h-5 w-5" />
+      </Button> */}
 
       <div className="hidden absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-secondaryBlack/20 to-black text-white p-4 transition-all duration-500 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 md:flex flex-col justify-end gap-2 z-10">
         <p className="text-xl font-bold anton-sc-regular">{title}</p>
         {description !== "" ? (
           <p className="text-sm">
-            {description.length > 50
-              ? description.slice(0, 50) + "..."
-              : description}
+            {typeof description === "string" && description.length > 0
+              ? description.length > 50
+                ? `${description.slice(0, 50)}...`
+                : description
+              : "Character witout description"}
           </p>
         ) : (
           <p>Character witout description</p>
@@ -38,7 +43,7 @@ export const CardsComponent = ({ title, description, img }: ICardsProps) => {
 
         <div className="flex justify-between items-center">
           <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md font-bold">
-            Ver más
+            View more
           </Button>
 
           <Button className="rounded-full p-2 text-textPrimary-dark bg-background-dark translation-all duration-200 hover:scale-110 hover:bg-redPrimary">
@@ -51,9 +56,11 @@ export const CardsComponent = ({ title, description, img }: ICardsProps) => {
         <p className="text-base  font-bold">{title}</p>
         {description !== "" ? (
           <p className="text-sm">
-            {description.length > 100
-              ? description.slice(0, 100) + "..."
-              : description}
+            {typeof description === "string" && description.length > 0
+              ? description.length > 100
+                ? `${description.slice(0, 100)}...`
+                : description
+              : "Character witout description"}
           </p>
         ) : (
           <p>Character witout description</p>
@@ -61,7 +68,7 @@ export const CardsComponent = ({ title, description, img }: ICardsProps) => {
 
         <div className="flex justify-between items-center">
           <Button className="text-textPrimary-dark bg-redPrimary text-sm px-3 py-1 rounded-md">
-            Ver más
+            View more
           </Button>
 
           <Button className="rounded-full p-2 text-textPrimary-dark bg-background-dark">

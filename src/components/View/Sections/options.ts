@@ -1,15 +1,17 @@
 export const categories = [
   {
     id: 1,
-    name: "events",
+    name: "characters",
   },
+
   {
     id: 2,
     name: "comics",
   },
+
   {
     id: 3,
-    name: "characters",
+    name: "series",
   },
 ];
 
