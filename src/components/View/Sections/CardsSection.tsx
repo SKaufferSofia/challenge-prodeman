@@ -36,8 +36,6 @@ const CardsSection = ({
   isFavorite,
   toggleFavorite,
 }: CardsSectionProps) => {
-  console.log("dataCArds", data);
-
   return (
     <section>
       {isLoading ? (

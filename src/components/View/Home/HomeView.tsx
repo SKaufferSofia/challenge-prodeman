@@ -7,12 +7,21 @@ import useLimitView from "@/hooks/useLimitView";
 import HeaderSection from "../Sections/HeaderSection";
 import { useFavorites } from "@/context/favoritesContext";
 import usePageCategory from "@/hooks/usePageCategory";
+import useFilterDate from "@/hooks/useFilterDate";
+import useFilterPage from "@/hooks/useFilterPage";
+import useFilterSeries from "@/hooks/useFilterSeries";
+import {
+  filteredData,
+  handleChangeFilter,
+  selectedFilter,
+} from "@/utils/utils";
 
 const HomeView = () => {
   const { search, handleChangeSearch } = useSearch();
   const { limit, handleChangeLimit } = useLimitView();
   const { page, setPage, selectedCategory, setSelectedCategory } =
     usePageCategory();
+
   const { isError, isLoading, data, totalPages } = useDataMarvel(
     search,
     limit,
@@ -20,13 +29,27 @@ const HomeView = () => {
     selectedCategory
   );
   const { isFavorite, toggleFavorite } = useFavorites();
-  const [selectedFilter, setSelectedFilter] = React.useState("");
+
+  //Hook de filtros
+  const { characterFilter, filteredCharacters, handleChangeDateCharacters } =
+    useFilterDate();
+  const { comicFilter, handleChangePageComics, filteredComics } =
+    useFilterPage();
+  const { eventFilter, handleChangeEventFilter, filteredEventsDate } =
+    useFilterSeries();
+
   return (
     <section>
       <HeroSection />
 
       <HeaderSection
-        data={data || []}
+        data={filteredData(
+          selectedCategory,
+          data || [],
+          filteredCharacters,
+          filteredComics,
+          filteredEventsDate
+        )}
         search={search}
         limit={limit}
         isError={isError}
@@ -39,9 +62,19 @@ const HomeView = () => {
         handleChangeLimit={handleChangeLimit}
         isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
-        setSelectedFilter={setSelectedFilter}
+        selectedFilter={selectedFilter(
+          selectedCategory,
+          characterFilter,
+          comicFilter,
+          eventFilter
+        )}
+        handleChangeFilter={handleChangeFilter(
+          selectedCategory,
+          handleChangeDateCharacters,
+          handleChangePageComics,
+          handleChangeEventFilter
+        )}
         handleChangeSearch={handleChangeSearch}
-        selectedFilter={selectedFilter}
       />
 
       {/* <HeaderSection /> */}

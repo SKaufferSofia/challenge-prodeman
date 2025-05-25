@@ -7,7 +7,6 @@ type SectionCategoryProps = {
   selectedCategory: string;
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-  setSelectedFilter: React.Dispatch<React.SetStateAction<string>>;
   scrollToGrid: () => void;
 };
 
@@ -17,7 +16,6 @@ const SectionCategory = ({
   selectedCategory,
   setSelectedCategory,
   setPage,
-  setSelectedFilter,
   scrollToGrid,
 }: SectionCategoryProps) => {
   return (
@@ -36,7 +34,6 @@ const SectionCategory = ({
           onClick={() => {
             setSelectedCategory(category.name);
             setPage(1);
-            setSelectedFilter("");
             scrollToGrid();
           }}
         >

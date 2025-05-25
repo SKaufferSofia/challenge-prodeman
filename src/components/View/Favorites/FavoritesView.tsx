@@ -7,6 +7,14 @@ import useDataFavorites from "@/hooks/useDataFavorites";
 import useLimitView from "@/hooks/useLimitView";
 import HeaderSection from "../Sections/HeaderSection";
 import useSearch from "@/hooks/useSearch";
+import useFilterDate from "@/hooks/useFilterDate";
+import useFilterPage from "@/hooks/useFilterPage";
+import useFilterSeries from "@/hooks/useFilterSeries";
+import {
+  filteredData,
+  handleChangeFilter,
+  selectedFilter,
+} from "@/utils/utils";
 
 const FavoritesView = () => {
   const { favorites, isFavorite, toggleFavorite } = useFavorites();
@@ -14,6 +22,7 @@ const FavoritesView = () => {
     usePageCategory();
   const { search, handleChangeSearch } = useSearch();
   const { limit, handleChangeLimit } = useLimitView();
+
   const { data, isError, isLoading, totalPages } = useDataFavorites(
     favorites,
     search,
@@ -21,13 +30,26 @@ const FavoritesView = () => {
     page,
     selectedCategory
   );
-  const [selectedFilter, setSelectedFilter] = React.useState("");
+
+  //Hook de filtros
+  const { characterFilter, filteredCharacters, handleChangeDateCharacters } =
+    useFilterDate();
+  const { comicFilter, handleChangePageComics, filteredComics } =
+    useFilterPage();
+  const { eventFilter, handleChangeEventFilter, filteredEventsDate } =
+    useFilterSeries();
 
   return (
     <section>
       <HeroSection />
       <HeaderSection
-        data={data || []}
+        data={filteredData(
+          selectedCategory,
+          data || [],
+          filteredCharacters,
+          filteredComics,
+          filteredEventsDate
+        )}
         search={search}
         limit={limit}
         isError={isError}
@@ -40,8 +62,18 @@ const FavoritesView = () => {
         handleChangeLimit={handleChangeLimit}
         isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
-        selectedFilter={selectedFilter}
-        setSelectedFilter={setSelectedFilter}
+        selectedFilter={selectedFilter(
+          selectedCategory,
+          characterFilter,
+          comicFilter,
+          eventFilter
+        )}
+        handleChangeFilter={handleChangeFilter(
+          selectedCategory,
+          handleChangeDateCharacters,
+          handleChangePageComics,
+          handleChangeEventFilter
+        )}
         handleChangeSearch={handleChangeSearch}
       />
     </section>

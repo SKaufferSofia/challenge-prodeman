@@ -40,55 +40,79 @@ export const categories = [
   },
 ];
 
-export const valueOptions = [
+export const valueOptions: IOption[] = [
   {
-    value: "Last modified",
-    label: "Last modified",
+    value: "all",
+    label: "Todas las fechas",
   },
   {
-    value: "Today",
-    label: "Today",
+    value: "last5Years",
+    label: "Últimos 5 años",
   },
   {
-    value: "This week",
-    label: "This week",
+    value: "last10Years",
+    label: "Últimos 10 años",
   },
   {
-    value: "Year 2024",
-    label: "Year 2024",
+    value: "before2010",
+    label: "Antes de 2010",
   },
 ];
 
 export const valueOptionDate = [
   {
+    value: "all",
+    label: "Todas las fechas",
+  },
+  {
     value: "startDateAsc",
-    label: "Start Date (Oldest First)",
+    label: "Fecha inicio (Más antigua)",
   },
   {
     value: "startDateDesc",
-    label: "Start Date (Newest First)",
+    label: "Fecha inicio (Más reciente)",
   },
   {
     value: "endDateAsc",
-    label: "End Date (Oldest First)",
+    label: "Fecha fin (Más antigua)",
   },
   {
     value: "endDateDesc",
-    label: "End Date (Newest First)",
+    label: "Fecha fin (Más reciente)",
+  },
+  {
+    value: "ongoing",
+    label: "Eventos en curso",
+  },
+  {
+    value: "finished",
+    label: "Eventos finalizados",
   },
 ];
 
 export const valueOptionPage = [
   {
-    value: "pageCountAsc",
-    label: "Fewest pages",
+    value: "all",
+    label: "Todas las páginas",
   },
   {
-    value: "pageCountDesc",
-    label: "Most pages",
+    value: "lessThan50",
+    label: "Menos de 50 páginas",
   },
   {
-    value: "pageCount100Plus",
-    label: "100 pages or more",
+    value: "50to100",
+    label: "50-100 páginas",
+  },
+  {
+    value: "100to200",
+    label: "100-200 páginas",
+  },
+  {
+    value: "moreThan200",
+    label: "Más de 200 páginas",
+  },
+  {
+    value: "noPages",
+    label: "Sin páginas definidas",
   },
 ];

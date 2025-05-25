@@ -1,7 +1,12 @@
 "use client";
 import React from "react";
 import SectionCategory from "./SectionCategory";
-import { categories } from "./options";
+import {
+  categories,
+  valueOptionDate,
+  valueOptionPage,
+  valueOptions,
+} from "./options";
 import CardsSection from "./CardsSection";
 import FilterSection from "./FilterSection";
 import { FavoriteItem, FavoritesContextType } from "@/context/favoritesContext";
@@ -26,7 +31,7 @@ interface HeaderSectionProps {
   selectedCategory: string;
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   selectedFilter: string;
-  setSelectedFilter: React.Dispatch<React.SetStateAction<string>>;
+  handleChangeFilter: (filter: string) => void;
   isFavorite: FavoritesContextType["isFavorite"];
   toggleFavorite: FavoritesContextType["toggleFavorite"];
 }
@@ -43,7 +48,8 @@ const HeaderSection = ({
   handleChangeLimit,
   selectedCategory,
   setSelectedCategory,
-  setSelectedFilter,
+  selectedFilter,
+  handleChangeFilter,
   handleChangeSearch,
   isFavorite,
   toggleFavorite,
@@ -64,13 +70,21 @@ const HeaderSection = ({
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         setPage={setPage}
-        setSelectedFilter={setSelectedFilter}
         scrollToGrid={scrollToGrid}
       />
 
       <FilterSection
         search={search}
         handleChangeSearch={handleChangeSearch}
+        arrayOptions={
+          selectedCategory === "series"
+            ? valueOptionDate
+            : selectedCategory === "comics"
+            ? valueOptionPage
+            : valueOptions
+        }
+        selectedFilter={selectedFilter}
+        handleChangeFilter={handleChangeFilter}
         limit={limit}
         handleChangeLimit={handleChangeLimit}
       />
