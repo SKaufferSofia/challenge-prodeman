@@ -20,7 +20,6 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Construimos la query string correctamente
   const queryParams = new URLSearchParams();
   queryParams.set("limit", limit);
   queryParams.set("offset", offset);
@@ -32,7 +31,6 @@ export async function GET(req: NextRequest) {
     queryParams.set("modifiedsince", modifiedSince);
   }
 
-  // Si hay un término de búsqueda, lo agregamos dependiendo de la categoría
   if (search) {
     if (category === "characters") {
       queryParams.set("nameStartsWith", search);

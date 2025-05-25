@@ -16,14 +16,17 @@ export interface ICharacter extends IBaseMarvel {
 export interface IComic extends IBaseMarvel {
   title: string;
   description: string;
+  pageCount: number;
 }
 
-export interface IEvent extends IBaseMarvel {
+export interface ISeries extends IBaseMarvel {
   title: string;
   description: string;
+  startYear: number;
+  endYear: number;
 }
 
-export type MarvelItem = ICharacter | IComic | IEvent;
+export type MarvelItem = ICharacter | IComic | ISeries;
 
 export interface IDataMarvel {
   limit: number;
@@ -37,6 +40,29 @@ export interface ICharacterFront {
   name: string;
   description: string;
   modified: string;
+  img: string;
+  urlId: string;
+  favorite: boolean;
+}
+
+export interface IComicFront {
+  id: number;
+  name: string;
+  description: string;
+  modified: string;
+  pageCount: number;
+  img: string;
+  urlId: string;
+  favorite: boolean;
+}
+
+export interface ISeriesFront {
+  id: number;
+  name: string;
+  description: string;
+  modified: string;
+  startYear: number;
+  endYear: number;
   img: string;
   urlId: string;
   favorite: boolean;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import "@/styles/font.css";
 import ProviderReactQuery from "@/react-query/ProviderReactQuery";
+import { FavoritesProvider } from "@/context/favoritesContext";
 //import NavbarComponent from "@/components/Navbar/NavbarComponent";
 
 export const metadata: Metadata = {
@@ -29,7 +30,9 @@ export default function RootLayout({
         />
       </head>
       <body className="open-sans-regular">
-        <ProviderReactQuery>{children}</ProviderReactQuery>
+        <ProviderReactQuery>
+          <FavoritesProvider>{children}</FavoritesProvider>
+        </ProviderReactQuery>
       </body>
     </html>
   );
