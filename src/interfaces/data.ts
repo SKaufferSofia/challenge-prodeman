@@ -43,6 +43,7 @@ export interface ICharacterFront {
   img: string;
   urlId: string;
   favorite: boolean;
+  category: string;
 }
 
 export interface IComicFront {
@@ -54,6 +55,7 @@ export interface IComicFront {
   img: string;
   urlId: string;
   favorite: boolean;
+  category: string;
 }
 
 export interface ISeriesFront {
@@ -66,4 +68,5 @@ export interface ISeriesFront {
   img: string;
   urlId: string;
   favorite: boolean;
+  category: string;
 }

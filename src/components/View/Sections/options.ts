@@ -1,3 +1,28 @@
+import { IOption } from "@/components/UI/Select";
+
+export const limitOptions: IOption[] = [
+  {
+    value: " 16",
+    label: "16",
+  },
+  {
+    value: "32",
+    label: "32",
+  },
+  {
+    value: "48",
+    label: "48",
+  },
+  {
+    value: "64",
+    label: "64",
+  },
+  {
+    value: "80",
+    label: "80",
+  },
+];
+
 export const categories = [
   {
     id: 1,

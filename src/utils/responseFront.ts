@@ -20,6 +20,7 @@ export const charactersResponse = (characters: ICharacter[]) => {
       img: character.thumbnail.path + "." + character.thumbnail.extension,
       urlId: character.resourceURI,
       favorite: false,
+      category: "characters",
     })
   );
 };
@@ -38,6 +39,7 @@ export const comicsResponse = (comics: IComic[]) => {
       img: comic.thumbnail.path + "." + comic.thumbnail.extension,
       urlId: comic.resourceURI,
       favorite: false,
+      category: "comics",
     })
   );
 };
@@ -57,6 +59,7 @@ export const seriesResponse = (series: ISeries[]) => {
       img: comic.thumbnail.path + "." + comic.thumbnail.extension,
       urlId: comic.resourceURI,
       favorite: false,
+      category: "series",
     })
   );
 };

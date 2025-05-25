@@ -4,7 +4,7 @@ import { ICharacterFront, IComicFront, ISeriesFront } from "@/interfaces/data";
 
 export type FavoriteItem = ICharacterFront | IComicFront | ISeriesFront;
 
-interface FavoritesContextType {
+export interface FavoritesContextType {
   favorites: FavoriteItem[];
   toggleFavorite: (item: FavoriteItem) => void;
   isFavorite: (id: number) => boolean;

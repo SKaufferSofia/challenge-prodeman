@@ -6,13 +6,13 @@ import {
   seriesResponse,
 } from "@/utils/responseFront";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 
-const useDataMarvel = (search?: string) => {
-  const [selectedCategory, setSelectedCategory] = useState("characters");
-  const [limit, setLimit] = useState("16");
-  const [page, setPage] = useState(1);
-
+const useDataMarvel = (
+  search: string,
+  limit: string,
+  page: number,
+  selectedCategory: string
+) => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ["marvel", selectedCategory, limit, page, search],
     queryFn: async () => {
@@ -54,15 +54,9 @@ const useDataMarvel = (search?: string) => {
   const totalPages = data ? Math.ceil(data.total / parseInt(limit)) : 0;
 
   return {
-    selectedCategory,
-    setSelectedCategory,
     isLoading,
     isError,
     data: data?.results,
-    limit,
-    setLimit,
-    page,
-    setPage,
     totalPages,
   };
 };
