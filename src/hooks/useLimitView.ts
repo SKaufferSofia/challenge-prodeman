@@ -4,14 +4,16 @@ const useLimitView = () => {
   const [limit, setLimit] = useState("16");
 
   useEffect(() => {
-    const limit = localStorage.getItem("limit");
-    if (limit) {
-      setLimit(limit);
+    if (typeof window !== "undefined") {
+      const limit = localStorage.getItem("limit");
+      if (limit) {
+        setLimit(limit);
+      }
     }
   }, []);
 
   const handleChangeLimit = (limit: string) => {
-    localStorage.setItem("limit", limit);
+    if (typeof window !== "undefined") localStorage.setItem("limit", limit);
     setLimit(limit);
   };
 

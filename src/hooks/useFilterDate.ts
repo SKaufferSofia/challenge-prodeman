@@ -45,14 +45,18 @@ const useFilterDate = () => {
   };
 
   useEffect(() => {
-    const dateCharacters = localStorage.getItem("dateCharacters");
-    if (dateCharacters) {
-      setCharacterFilter(dateCharacters);
+    if (typeof window !== "undefined") {
+      const dateCharacters = localStorage.getItem("dateCharacters");
+      if (dateCharacters) {
+        setCharacterFilter(dateCharacters);
+      }
     }
   }, []);
 
   const handleChangeDateCharacters = (dateCharacters: string) => {
-    localStorage.setItem("dateCharacters", dateCharacters);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("dateCharacters", dateCharacters);
+    }
     setCharacterFilter(dateCharacters);
   };
 

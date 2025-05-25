@@ -62,14 +62,17 @@ const useFilterSeries = () => {
   };
 
   useEffect(() => {
-    const eventFilter = localStorage.getItem("eventFilter");
-    if (eventFilter) {
-      setEventFilter(eventFilter);
+    if (typeof window !== "undefined") {
+      const eventFilter = localStorage.getItem("eventFilter");
+      if (eventFilter) {
+        setEventFilter(eventFilter);
+      }
     }
   }, []);
 
   const handleChangeEventFilter = (eventFilter: string) => {
-    localStorage.setItem("eventFilter", eventFilter);
+    if (typeof window !== "undefined")
+      localStorage.setItem("eventFilter", eventFilter);
     setEventFilter(eventFilter);
   };
 

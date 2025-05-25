@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import "@/styles/font.css";
 import ProviderReactQuery from "@/react-query/ProviderReactQuery";
 import { FavoritesProvider } from "@/context/favoritesContext";
-//import NavbarComponent from "@/components/Navbar/NavbarComponent";
 
 export const metadata: Metadata = {
   title: "Marvel Web",
@@ -16,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="light">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

@@ -31,14 +31,17 @@ const useFilterPage = () => {
   };
 
   useEffect(() => {
-    const pageComics = localStorage.getItem("pageComics");
-    if (pageComics) {
-      setComicFilter(pageComics);
+    if (typeof window !== "undefined") {
+      const pageComics = localStorage.getItem("pageComics");
+      if (pageComics) {
+        setComicFilter(pageComics);
+      }
     }
   }, []);
 
   const handleChangePageComics = (pageComics: string) => {
-    localStorage.setItem("pageComics", pageComics);
+    if (typeof window !== "undefined")
+      localStorage.setItem("pageComics", pageComics);
     setComicFilter(pageComics);
   };
 
