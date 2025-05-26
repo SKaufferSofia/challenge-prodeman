@@ -9,35 +9,7 @@ import {
 } from "./options";
 import CardsSection from "./CardsSection";
 import FilterSection from "./FilterSection";
-import { FavoriteItem, FavoritesContextType } from "@/context/favoritesContext";
-import { ICharacterFront, IComicFront, ISeriesFront } from "@/interfaces/data";
-
-interface HeaderSectionProps {
-  sectionId: string;
-  data:
-    | ICharacterFront[]
-    | IComicFront[]
-    | ISeriesFront[]
-    | FavoriteItem[]
-    | [];
-  isLoading: boolean;
-  isError: boolean;
-  page: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-  totalPages: number;
-  search: string;
-  handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  limit: string;
-  handleChangeLimit: (limit: string) => void;
-  selectedCategory: string;
-  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
-  selectedFilter: string;
-  handleChangeFilter: (filter: string) => void;
-  isFavorite: FavoritesContextType["isFavorite"];
-  toggleFavorite: FavoritesContextType["toggleFavorite"];
-  checkboxChecked: boolean;
-  handleChangeImg: (checked: boolean) => void;
-}
+import { HeaderSectionProps } from "@/interfaces/sections";
 
 const HeaderSection = ({
   sectionId,
@@ -67,7 +39,6 @@ const HeaderSection = ({
       gridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-  console.log("sectionId", sectionId);
 
   return (
     <section

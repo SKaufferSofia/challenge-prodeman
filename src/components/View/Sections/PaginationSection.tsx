@@ -1,13 +1,7 @@
 import React from "react";
 import { Button } from "@/components/UI/Button";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
-interface PaginationSectionProps {
-  page: number;
-  totalPages: number;
-  setPage: (page: number) => void;
-  scrollToGrid: () => void;
-}
+import { PaginationSectionProps } from "@/interfaces/sections";
 
 const PaginationSection = ({
   page,

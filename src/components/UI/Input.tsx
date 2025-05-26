@@ -1,12 +1,4 @@
-interface IInputProps {
-  ref?: React.RefObject<HTMLInputElement | null>;
-  type: string;
-  name: string;
-  placeholder: string;
-  className?: string;
-  value?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { IInputProps } from "@/interfaces/ui";
 
 export const Input = ({
   ref,

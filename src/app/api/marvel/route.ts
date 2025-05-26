@@ -40,7 +40,6 @@ export async function GET(req: NextRequest) {
   }
 
   const url = `https://gateway.marvel.com/v1/public/${category}?${queryParams.toString()}`;
-  console.log("Marvel API URL:", url);
 
   try {
     const response = await fetch(url);

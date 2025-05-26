@@ -2,29 +2,10 @@
 import React from "react";
 import { CardsComponent } from "@/components/UI/Cards";
 import { Spiner } from "@/components/UI/Spiner";
-import { ICharacterFront, IComicFront, ISeriesFront } from "@/interfaces/data";
-import { FavoriteItem, FavoritesContextType } from "@/context/favoritesContext";
 import PaginationSection from "./PaginationSection";
 import { Button } from "@/components/UI/Button";
 import Link from "next/link";
-interface CardsSectionProps {
-  sectionId: string;
-  data:
-    | ICharacterFront[]
-    | IComicFront[]
-    | ISeriesFront[]
-    | FavoriteItem[]
-    | [];
-  isLoading: boolean;
-  isError: boolean;
-  page: number;
-  setPage: (page: number) => void;
-  totalPages: number;
-  search: string;
-  scrollToGrid: () => void;
-  isFavorite: FavoritesContextType["isFavorite"];
-  toggleFavorite: FavoritesContextType["toggleFavorite"];
-}
+import { CardsSectionProps } from "@/interfaces/sections";
 
 const CardsSection = ({
   sectionId,
@@ -40,7 +21,7 @@ const CardsSection = ({
   toggleFavorite,
 }: CardsSectionProps) => {
   return (
-    <section className="w-full bg-secondaryWhite dark:bg-secondaryBlack p-5 text-center">
+    <section className="w-full bg-secondaryWhite dark:bg-secondaryBlack p-5 ">
       {isLoading ? (
         <Spiner />
       ) : isError ? (
@@ -56,7 +37,7 @@ const CardsSection = ({
           <p className="anton-sc-regular text-base md:text-xl">
             You have no favorites yet.
           </p>
-          <Button className="w-1/5 p-2 bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite dark:text-secondaryBlack">
+          <Button className="w-1/5 p-2 hover:scale-105 transition-all duration-200 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite ">
             <Link href={{ pathname: "/", query: { section: "home" } }}>
               Add Favorites
             </Link>

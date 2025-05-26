@@ -1,14 +1,7 @@
+import { HeroSectionProps } from "@/interfaces/sections";
 import Link from "next/link";
 import React from "react";
 import { FaArrowDown } from "react-icons/fa";
-
-interface HeroSectionProps {
-  section: string;
-  url: string;
-  title: string;
-  title2: string;
-  description: string;
-}
 
 const HeroSection = ({
   section,

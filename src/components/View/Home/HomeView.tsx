@@ -19,7 +19,6 @@ import useFilterImgNotFound from "@/hooks/useFilterImgNotFound";
 
 const HomeView = () => {
   const { search, handleChangeSearch } = useSearch();
-  console.log("search", search);
 
   const { limit, handleChangeLimit } = useLimitView();
   const { page, setPage, selectedCategory, setSelectedCategory } =

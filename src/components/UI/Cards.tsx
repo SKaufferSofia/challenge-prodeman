@@ -4,14 +4,7 @@ import Image from "next/image";
 import { Button } from "./Button";
 import { FaHeart } from "react-icons/fa6";
 import { SpinerImg } from "./Spiner";
-
-interface ICardsProps {
-  title: string;
-  description: string;
-  img: string;
-  favorites: boolean;
-  toggleFavorite: () => void;
-}
+import { ICardsProps } from "@/interfaces/ui";
 
 export const CardsComponent = ({
   title,

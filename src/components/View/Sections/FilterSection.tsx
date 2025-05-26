@@ -1,22 +1,11 @@
 import { Input } from "@/components/UI/Input";
-import { IOption, Select } from "@/components/UI/Select";
+import { Select } from "@/components/UI/Select";
 import React from "react";
 import { IoGrid } from "react-icons/io5";
 import { limitOptions } from "./options";
 import Checkbox from "@/components/UI/Checkbox";
 import { FaChevronDown, FaFilter } from "react-icons/fa";
-
-interface FilterSectionProps {
-  arrayOptions: IOption[];
-  limit: string;
-  handleChangeLimit: (limit: string) => void;
-  search: string;
-  handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  selectedFilter: string;
-  handleChangeFilter: (filter: string) => void;
-  checkboxChecked: boolean;
-  handleChangeImg: (checked: boolean) => void;
-}
+import { FilterSectionProps } from "@/interfaces/sections";
 
 const FilterSection = ({
   arrayOptions,

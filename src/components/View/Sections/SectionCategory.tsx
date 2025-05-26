@@ -1,14 +1,6 @@
 import { Button } from "@/components/UI/Button";
+import { SectionCategoryProps } from "@/interfaces/sections";
 import React from "react";
-
-type SectionCategoryProps = {
-  gridRef: React.RefObject<HTMLDivElement | null>;
-  categories: { id: number; name: string }[];
-  selectedCategory: string;
-  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-  scrollToGrid: () => void;
-};
 
 const SectionCategory = ({
   gridRef,

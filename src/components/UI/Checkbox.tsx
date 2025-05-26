@@ -15,7 +15,7 @@ const Checkbox = ({
         checked={checked}
         onChange={onChange}
         className={clsx(
-          "cursor-pointer peer appearance-none w-5 h-5 bg-background dark:bg-secondaryBlack rounded transition-colors",
+          "cursor-pointer peer appearance-none w-5 h-5 bg-background dark:bg-background-dark rounded transition-colors",
           "checked:border-redPrimary checked:bg-redPrimary"
         )}
       />

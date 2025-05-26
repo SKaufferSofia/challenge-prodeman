@@ -1,16 +1,6 @@
+import { ISelectProps } from "@/interfaces/ui";
 import React from "react";
 import { FaChevronDown } from "react-icons/fa";
-export interface IOption {
-  value: string;
-  label: string;
-}
-
-interface ISelectProps {
-  arrayOptions: IOption[];
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  className?: string;
-}
 
 export const Select = ({
   arrayOptions,
