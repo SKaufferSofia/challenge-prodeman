@@ -31,7 +31,7 @@ export const CardsComponent = ({
       </div>
 
       {favorites && (
-        <Button className="hidden rounded-full group-hover:opacity-0 md:absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
+        <Button className="hidden md:block rounded-full group-hover:opacity-0 absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
           <FaHeart className="h-5 w-5" />
         </Button>
       )}
