@@ -25,11 +25,11 @@ const CardsSection = ({
       {isLoading ? (
         <Spiner />
       ) : isError ? (
-        <p className="h-[50vh] anton-sc-regular text-base md:text-xl">
+        <p className="h-[50vh] text-center anton-sc-regular text-base md:text-xl">
           Something went wrong.
         </p>
       ) : search && data?.length === 0 ? (
-        <p className="h-[50vh] anton-sc-regular text-base md:text-xl">
+        <p className="h-[50vh] text-center anton-sc-regular text-base md:text-xl">
           No search results found.
         </p>
       ) : sectionId === "favorites" && data?.length === 0 ? (
