@@ -31,7 +31,7 @@ export const CardsComponent = ({
       </div>
 
       {favorites && (
-        <Button className="rounded-full group-hover:opacity-0 absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
+        <Button className="hidden rounded-full group-hover:opacity-0 md:absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
           <FaHeart className="h-5 w-5" />
         </Button>
       )}
@@ -46,10 +46,6 @@ export const CardsComponent = ({
         </p>
 
         <div className="flex justify-between items-center">
-          {/* <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md font-bold">
-            View more
-          </Button> */}
-
           <Button
             onClick={() => toggleFavorite()}
             className={`${
@@ -70,11 +66,14 @@ export const CardsComponent = ({
         </p>
 
         <div className="flex justify-between items-center">
-          <Button className="text-textPrimary-dark bg-redPrimary text-sm px-3 py-1 rounded-md">
-            View more
-          </Button>
-
-          <Button className="rounded-full p-2 text-textPrimary-dark bg-background-dark">
+          <Button
+            className={`rounded-full p-2   ${
+              favorites
+                ? "text-textPrimary-dark bg-redPrimary"
+                : "text-textPrimary-dark bg-background-dark"
+            }`}
+            onClick={() => toggleFavorite()}
+          >
             <FaHeart className="h-5 w-5" />
           </Button>
         </div>

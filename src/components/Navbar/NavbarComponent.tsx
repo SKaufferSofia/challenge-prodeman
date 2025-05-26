@@ -33,11 +33,11 @@ const NavbarComponent = () => {
   //ESTILOS
   const itemClass =
     "text-2xl anton-sc-regular bg-transparent transition-all duration-200 hover:bg-redPrimary p-2 hover:text-textPrimary-dark hover:scale-110 hidden md:flex";
-  const itemClassResponsive = "text-xl anton-sc-regular text-textPrimary";
+  const itemClassResponsive = "text-xl anton-sc-regular";
 
   return (
     <nav
-      className={`w-full flex justify-center items-center ${bgColor} p-5 fixed top-0 left-0 w-full z-50 transition-all duration-300`}
+      className={`w-full ${bgColor} p-5 fixed top-0 left-0 w-full z-50 transition-all duration-300 py-10`}
     >
       {/* TOP BAR */}
       <div className="flex justify-between items-center md:justify-center gap-5 md:gap-16">
@@ -64,12 +64,16 @@ const NavbarComponent = () => {
           {openToggle ? (
             <FaXmark
               size={30}
-              className="text-textPrimary dark:text-textPrimary-dark"
+              className={`${
+                bgColor.includes("transparent") ? "text-textPrimary-dark" : ""
+              }`}
             />
           ) : (
             <FaBars
               size={30}
-              className="text-textPrimary dark:text-textPrimary-dark"
+              className={`${
+                bgColor.includes("transparent") ? "text-textPrimary-dark" : ""
+              }`}
             />
           )}
         </Button>
@@ -77,7 +81,7 @@ const NavbarComponent = () => {
         <Link href="/favorites">
           <p className={itemClass}>FAVORITES</p>
         </Link>
-        <div className="md:absolute md:right-5 md:top-1/2 md:transform md:-translate-y-1/2">
+        <div className="md:absolute right-2 md:right-5 md:top-1/2 md:transform md:-translate-y-1/2">
           <ThemeToggleSwiper />
         </div>
       </div>
@@ -86,10 +90,26 @@ const NavbarComponent = () => {
       {openToggle && (
         <div className="flex flex-col items-center gap-4 mt-6 md:hidden">
           <Link href="/home">
-            <p className={itemClassResponsive}>HOME</p>
+            <p
+              className={
+                bgColor.includes("transparent")
+                  ? itemClassResponsive
+                  : itemClassResponsive
+              }
+            >
+              HOME
+            </p>
           </Link>
           <Link href="/favorites">
-            <p className={itemClassResponsive}>FAVORITES</p>
+            <p
+              className={
+                bgColor.includes("transparent")
+                  ? itemClassResponsive
+                  : itemClassResponsive
+              }
+            >
+              FAVORITES
+            </p>
           </Link>
         </div>
       )}
