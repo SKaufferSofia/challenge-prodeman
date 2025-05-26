@@ -56,11 +56,11 @@ const PaginationSection = ({
       <p className="font-semibold text-textPrimary dark:text-textPrimary-dark">
         Page {page} of {totalPages}
       </p>
-      <div className="flex gap-2 flex-wrap justify-center">
+      <div className="flex gap-2 flex-wrap justify-center ">
         <Button
           onClick={() => handleChange(Math.max(page - 1, 1))}
           disabled={page === 1}
-          className="cursor-pointer disabled:opacity-30"
+          className="cursor-pointer disabled:opacity-30  p-2 dark:bg-background-dark bg-background"
         >
           <FaArrowLeft className="h-4 w-4" />
         </Button>
@@ -110,7 +110,7 @@ const PaginationSection = ({
         <Button
           onClick={() => handleChange(Math.min(page + 1, totalPages))}
           disabled={page === totalPages}
-          className="cursor-pointer disabled:opacity-30"
+          className="cursor-pointer disabled:opacity-30 p-2 dark:bg-background-dark bg-background"
         >
           <FaArrowRight className="h-4 w-4" />
         </Button>
