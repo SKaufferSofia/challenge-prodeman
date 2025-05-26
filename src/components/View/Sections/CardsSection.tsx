@@ -37,7 +37,7 @@ const CardsSection = ({
           <p className="anton-sc-regular text-base md:text-xl">
             You have no favorites yet.
           </p>
-          <Button className="w-1/5 p-2 hover:scale-105 transition-all duration-200 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite ">
+          <Button className="md:w-1/5 p-2 hover:scale-105 transition-all duration-200 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite ">
             <Link href={{ pathname: "/", query: { section: "home" } }}>
               Add Favorites
             </Link>
