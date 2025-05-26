@@ -1,4 +1,4 @@
-import { IOption } from "@/components/UI/Select";
+import { IOption } from "@/interfaces/ui";
 
 export const limitOptions: IOption[] = [
   {
@@ -90,7 +90,7 @@ export const valueOptionDate = [
   },
 ];
 
-export const valueOptionPage = [
+export const valueOptionPage: IOption[] = [
   {
     value: "all",
     label: "All pages",
