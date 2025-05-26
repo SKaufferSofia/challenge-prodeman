@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const publicKey = "1f1fbcbb67c53cc2877b8e35ee18802a";
-const hash = "7034f53029aec1c396828144ed6c27ac";
+const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY; //"1f1fbcbb67c53cc2877b8e35ee18802a";
+const hash = process.env.NEXT_PUBLIC_MARVEL_HASH; //"7034f53029aec1c396828144ed6c27ac";
 
 export async function GET(req: NextRequest) {
   const ts = "1";
@@ -24,8 +24,8 @@ export async function GET(req: NextRequest) {
   queryParams.set("limit", limit);
   queryParams.set("offset", offset);
   queryParams.set("ts", ts);
-  queryParams.set("apikey", publicKey);
-  queryParams.set("hash", hash);
+  queryParams.set("apikey", publicKey || "");
+  queryParams.set("hash", hash || "");
 
   if (modifiedSince) {
     queryParams.set("modifiedsince", modifiedSince);
