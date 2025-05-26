@@ -19,7 +19,10 @@ const CardsSection = ({
   scrollToGrid,
   isFavorite,
   toggleFavorite,
+  selectedFilter,
 }: CardsSectionProps) => {
+  console.log("selecedFilter", selectedFilter);
+
   return (
     <section className="w-full bg-secondaryWhite dark:bg-secondaryBlack p-5 ">
       {isLoading ? (
@@ -32,6 +35,20 @@ const CardsSection = ({
         <p className="h-[50vh] text-center anton-sc-regular text-base md:text-xl">
           No search results found.
         </p>
+      ) : selectedFilter && data?.length === 0 ? (
+        <div className="h-[50vh] flex flex-col justify-between">
+          <p className="text-center anton-sc-regular text-base md:text-xl">
+            No results found. Try changing the page, filters, cards per view, or
+            unchecking hide broken images.
+          </p>
+
+          <PaginationSection
+            page={page}
+            totalPages={totalPages}
+            setPage={setPage}
+            scrollToGrid={scrollToGrid}
+          />
+        </div>
       ) : sectionId === "favorites" && data?.length === 0 ? (
         <div className="h-[50vh]  flex flex-col items-center justify-start gap-4">
           <p className="anton-sc-regular text-base md:text-xl">

@@ -84,6 +84,7 @@ const HeaderSection = ({
         scrollToGrid={scrollToGrid}
         isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
+        selectedFilter={selectedFilter}
       />
     </section>
   );

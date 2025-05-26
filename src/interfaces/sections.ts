@@ -18,6 +18,7 @@ export interface CardsSectionProps {
   scrollToGrid: () => void;
   isFavorite: FavoritesContextType["isFavorite"];
   toggleFavorite: FavoritesContextType["toggleFavorite"];
+  selectedFilter: string;
 }
 
 export interface FilterSectionProps {

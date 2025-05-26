@@ -14,7 +14,7 @@ const PaginationSection = ({
   React.useEffect(() => {
     const updateLimit = () => {
       if (window.innerWidth < 640) {
-        setLimit(3);
+        setLimit(2);
       } else if (window.innerWidth < 768) {
         setLimit(4);
       } else if (window.innerWidth < 1024) {
