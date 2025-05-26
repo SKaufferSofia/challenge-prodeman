@@ -88,7 +88,7 @@ const NavbarComponent = () => {
       {/* DROPDOWN MENU */}
       {openToggle && (
         <div className="flex flex-col items-center gap-4 mt-6 md:hidden">
-          <Link href="/home">
+          <Link href="/">
             <p
               className={
                 bgColor.includes("transparent")
