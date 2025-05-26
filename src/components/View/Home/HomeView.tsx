@@ -15,6 +15,7 @@ import {
   selectedFilter,
 } from "@/utils/utils";
 import HeroSection from "../Sections/HeroSection";
+import useFilterImgNotFound from "@/hooks/useFilterImgNotFound";
 
 const HomeView = () => {
   const { search, handleChangeSearch } = useSearch();
@@ -39,6 +40,8 @@ const HomeView = () => {
     useFilterPage();
   const { eventFilter, handleChangeEventFilter, filteredEventsDate } =
     useFilterSeries();
+  const { imgNotFound, handleChangeImg, filterDataImgNotFound } =
+    useFilterImgNotFound();
 
   return (
     <section>
@@ -54,7 +57,7 @@ const HomeView = () => {
         sectionId="home"
         data={filteredData(
           selectedCategory,
-          data || [],
+          filterDataImgNotFound(data || []),
           filteredCharacters,
           filteredComics,
           filteredEventsDate
@@ -84,6 +87,8 @@ const HomeView = () => {
           handleChangeEventFilter
         )}
         handleChangeSearch={handleChangeSearch}
+        checkboxChecked={imgNotFound}
+        handleChangeImg={handleChangeImg}
       />
 
       {/* <HeaderSection /> */}

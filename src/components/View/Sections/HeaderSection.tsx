@@ -35,6 +35,8 @@ interface HeaderSectionProps {
   handleChangeFilter: (filter: string) => void;
   isFavorite: FavoritesContextType["isFavorite"];
   toggleFavorite: FavoritesContextType["toggleFavorite"];
+  checkboxChecked: boolean;
+  handleChangeImg: (checked: boolean) => void;
 }
 
 const HeaderSection = ({
@@ -55,6 +57,8 @@ const HeaderSection = ({
   handleChangeSearch,
   isFavorite,
   toggleFavorite,
+  checkboxChecked,
+  handleChangeImg,
 }: HeaderSectionProps) => {
   const gridRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -68,7 +72,7 @@ const HeaderSection = ({
   return (
     <section
       id={sectionId}
-      className="flex flex-col items-center justify-center py-10 px-10 md:px-20 lg:px-40 w-full h-full"
+      className="flex flex-col items-center justify-center py-10 px-10 md:px-20 w-full h-full "
     >
       <SectionCategory
         gridRef={gridRef}
@@ -93,9 +97,12 @@ const HeaderSection = ({
         handleChangeFilter={handleChangeFilter}
         limit={limit}
         handleChangeLimit={handleChangeLimit}
+        checkboxChecked={checkboxChecked}
+        handleChangeImg={handleChangeImg}
       />
 
       <CardsSection
+        sectionId={sectionId}
         data={data || []}
         isLoading={isLoading}
         isError={isError}

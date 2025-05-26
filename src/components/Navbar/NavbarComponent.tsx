@@ -5,10 +5,11 @@ import React from "react";
 import { FaBars } from "react-icons/fa";
 import { Button } from "../UI/Button";
 import { FaXmark } from "react-icons/fa6";
+import ThemeToggleSwiper from "./ThemeToggleSwiper";
 
 const NavbarComponent = () => {
   const [openToggle, setOpenToggle] = React.useState(false);
-  const [theme, setTheme] = React.useState("light");
+  // const [theme, setTheme] = React.useState("light");
   const [bgColor, setBgColor] = React.useState(
     "bg-transparent text-textPrimary-dark"
   );
@@ -17,8 +18,7 @@ const NavbarComponent = () => {
     const handleScroll = () => {
       if (window.scrollY > 3) {
         setBgColor(
-          "bg-secondaryWhite text-textPrimary"
-          //  theme === "dark" ? "bg-secondaryBlack" : "bg-secondaryWhite"
+          "bg-secondaryWhite text-textPrimary dark:text-textPrimary-dark dark:bg-secondaryBlack"
         );
       } else {
         setBgColor("bg-transparent text-textPrimary-dark");
@@ -28,7 +28,7 @@ const NavbarComponent = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [theme]);
+  }, []);
 
   //ESTILOS
   const itemClass =
@@ -37,10 +37,10 @@ const NavbarComponent = () => {
 
   return (
     <nav
-      className={`${bgColor} p-5 fixed top-0 left-0 w-full z-50 transition-all duration-300`}
+      className={`w-full flex justify-center items-center ${bgColor} p-5 fixed top-0 left-0 w-full z-50 transition-all duration-300`}
     >
       {/* TOP BAR */}
-      <div className="flex justify-between items-center md:justify-center md:gap-16">
+      <div className="flex justify-between items-center md:justify-center gap-5 md:gap-16">
         <Link href="/">
           <p className={itemClass}>HOME</p>
         </Link>
@@ -62,15 +62,24 @@ const NavbarComponent = () => {
           onClick={() => setOpenToggle(!openToggle)}
         >
           {openToggle ? (
-            <FaXmark size={30} className="text-textPrimary" />
+            <FaXmark
+              size={30}
+              className="text-textPrimary dark:text-textPrimary-dark"
+            />
           ) : (
-            <FaBars size={30} className="text-textPrimary" />
+            <FaBars
+              size={30}
+              className="text-textPrimary dark:text-textPrimary-dark"
+            />
           )}
         </Button>
 
         <Link href="/favorites">
           <p className={itemClass}>FAVORITES</p>
         </Link>
+        <div className="md:absolute md:right-5 md:top-1/2 md:transform md:-translate-y-1/2">
+          <ThemeToggleSwiper />
+        </div>
       </div>
 
       {/* DROPDOWN MENU */}

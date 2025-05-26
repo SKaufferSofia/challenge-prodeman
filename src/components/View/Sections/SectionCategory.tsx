@@ -21,12 +21,12 @@ const SectionCategory = ({
   return (
     <div
       ref={gridRef}
-      className="flex flex-col md:flex-row gap-5 w-full mb-10 items-center md:justify-center"
+      className="flex flex-col md:flex-row w-full mb-10 items-center md:justify-center"
     >
       {categories.map((category) => (
         <Button
           key={category.id}
-          className={` w-40 py-3 rounded-md font-extrabold uppercase transition cursor-pointer hover:text-textPrimary-dark hover:bg-redPrimary/80 ${
+          className={` w-40 py-3 font-extrabold uppercase transition cursor-pointer hover:text-textPrimary-dark hover:bg-redPrimary/80 ${
             selectedCategory === category.name
               ? "bg-redPrimary text-textPrimary-dark"
               : "bg-secondaryWhite dark:bg-secondaryBlack"

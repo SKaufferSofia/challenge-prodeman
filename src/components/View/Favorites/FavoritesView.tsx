@@ -16,6 +16,7 @@ import {
   selectedFilter,
 } from "@/utils/utils";
 import useScrollToSection from "@/hooks/useScrollToSection";
+import useFilterImgNotFound from "@/hooks/useFilterImgNotFound";
 
 const FavoritesView = () => {
   useScrollToSection();
@@ -40,6 +41,8 @@ const FavoritesView = () => {
     useFilterPage();
   const { eventFilter, handleChangeEventFilter, filteredEventsDate } =
     useFilterSeries();
+  const { imgNotFound, handleChangeImg, filterDataImgNotFound } =
+    useFilterImgNotFound();
 
   return (
     <section>
@@ -50,11 +53,12 @@ const FavoritesView = () => {
         title2="FAVORITES"
         description="This is where your favorite Marvel characters, comics, and series come together. Return anytime to explore more and keep building your ultimate hero (or villain) collection."
       />
+
       <HeaderSection
         sectionId="favorites"
         data={filteredData(
           selectedCategory,
-          data || [],
+          filterDataImgNotFound(data || []),
           filteredCharacters,
           filteredComics,
           filteredEventsDate
@@ -84,6 +88,8 @@ const FavoritesView = () => {
           handleChangeEventFilter
         )}
         handleChangeSearch={handleChangeSearch}
+        checkboxChecked={imgNotFound}
+        handleChangeImg={handleChangeImg}
       />
     </section>
   );

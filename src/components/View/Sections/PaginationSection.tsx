@@ -58,15 +58,15 @@ const PaginationSection = ({
   );
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">
-      <p className="font-medium">
+    <div className="flex flex-col md:flex-row justify-between gap-5 items-center mt-8 p-2 border-t border-background dark:border-gray-600">
+      <p className="font-semibold text-textPrimary dark:text-textPrimary-dark">
         Page {page} of {totalPages}
       </p>
-      <div className="flex gap-1 md:gap-2 flex-wrap justify-center">
+      <div className="flex gap-2 flex-wrap justify-center">
         <Button
           onClick={() => handleChange(Math.max(page - 1, 1))}
           disabled={page === 1}
-          className="cursor-pointer disabled:opacity-50"
+          className="cursor-pointer disabled:opacity-30"
         >
           <FaArrowLeft className="h-4 w-4" />
         </Button>
@@ -75,7 +75,7 @@ const PaginationSection = ({
           <>
             <Button
               onClick={() => handleChange(1)}
-              className="cursor-pointer w-10 h-10 font-semibold bg-textPrimary-dark"
+              className="cursor-pointer w-10 h-10 font-semibold bg-textPrimary-dark dark:bg-textPrimary"
             >
               1
             </Button>
@@ -92,7 +92,7 @@ const PaginationSection = ({
             className={`cursor-pointer w-10 h-10 font-semibold ${
               page === p
                 ? "bg-redPrimary font-bold text-textPrimary-dark"
-                : "bg-textPrimary-dark"
+                : "bg-textPrimary-dark dark:bg-textPrimary"
             }`}
           >
             {p}
@@ -106,7 +106,7 @@ const PaginationSection = ({
             </span>
             <Button
               onClick={() => handleChange(totalPages)}
-              className="cursor-pointer w-10 h-10 font-semibold bg-textPrimary-dark"
+              className="cursor-pointer w-10 h-10 font-semibold bg-textPrimary-dark dark:bg-textPrimary"
             >
               {totalPages}
             </Button>
@@ -116,7 +116,7 @@ const PaginationSection = ({
         <Button
           onClick={() => handleChange(Math.min(page + 1, totalPages))}
           disabled={page === totalPages}
-          className="cursor-pointer disabled:opacity-50"
+          className="cursor-pointer disabled:opacity-30"
         >
           <FaArrowRight className="h-4 w-4" />
         </Button>
