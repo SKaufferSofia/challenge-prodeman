@@ -8,8 +8,8 @@ const FooterComponent = () => {
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-center md:text-left">
           <p className="text-sm">
-            © {new Date().getFullYear()} 2025 Marvel Web by Sofia Kauffer —
-            Challenge for Prodeman.
+            © {new Date().getFullYear()} Marvel Web by Sofia Kauffer — Challenge
+            for Prodeman.
           </p>
           <p className="text-xs text-textPrimary-dark/80">
             Data provided by the{" "}

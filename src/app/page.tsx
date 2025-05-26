@@ -1,10 +1,5 @@
-//import LandingView from "@/components/View/Landing/LandingView";
+import ViewSections from "@/components/View/ViewSections";
 
 export default function Landing() {
-  return (
-    <main>
-      landing
-      {/* <LandingView /> */}
-    </main>
-  );
+  return <ViewSections />;
 }

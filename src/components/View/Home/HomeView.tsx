@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import HeroSection from "../Sections/HeroSection";
 import useSearch from "@/hooks/useSearch";
 import useDataMarvel from "@/hooks/useDataMarvel";
 import useLimitView from "@/hooks/useLimitView";
@@ -15,9 +14,12 @@ import {
   handleChangeFilter,
   selectedFilter,
 } from "@/utils/utils";
+import HeroSection from "../Sections/HeroSection";
 
 const HomeView = () => {
   const { search, handleChangeSearch } = useSearch();
+  console.log("search", search);
+
   const { limit, handleChangeLimit } = useLimitView();
   const { page, setPage, selectedCategory, setSelectedCategory } =
     usePageCategory();
@@ -40,9 +42,16 @@ const HomeView = () => {
 
   return (
     <section>
-      <HeroSection />
-
+      <HeroSection
+        section="home"
+        url="https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/ehjgk76y2kv41.jpg"
+        title="EXPLORE THE"
+        title2="MARVEL UNIVERSE"
+        description="Discover iconic characters, comics, and epic events that shaped
+          generations."
+      />
       <HeaderSection
+        sectionId="home"
         data={filteredData(
           selectedCategory,
           data || [],

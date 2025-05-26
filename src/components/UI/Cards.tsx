@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "./Button";
 import { FaHeart } from "react-icons/fa6";
+import { SpinerImg } from "./Spiner";
 
 interface ICardsProps {
   title: string;
@@ -19,15 +20,23 @@ export const CardsComponent = ({
   favorites,
   toggleFavorite,
 }: ICardsProps) => {
+  const [isLoading, setIsLoading] = React.useState(true);
   return (
     <div className="relative group rounded-lg overflow-hidden shadow-md ">
-      <Image
-        src={img}
-        alt="Spider-Man Logo"
-        width={1000}
-        height={1000}
-        className="w-full aspect-square object-cover transition-all duration-300 md:group-hover:blur-[1px] "
-      />
+      <div className="relative">
+        {isLoading && <SpinerImg />}
+        <Image
+          src={img}
+          alt="Spider-Man Logo"
+          priority={true}
+          unoptimized={true}
+          onLoad={() => setIsLoading(false)}
+          width={1000}
+          height={1000}
+          className="w-full aspect-square object-cover transition-all duration-300 md:group-hover:blur-[1px] "
+        />
+      </div>
+
       {favorites && (
         <Button className="rounded-full group-hover:opacity-0 absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
           <FaHeart className="h-5 w-5" />
@@ -44,9 +53,9 @@ export const CardsComponent = ({
         </p>
 
         <div className="flex justify-between items-center">
-          <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md font-bold">
+          {/* <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md font-bold">
             View more
-          </Button>
+          </Button> */}
 
           <Button
             onClick={() => toggleFavorite()}

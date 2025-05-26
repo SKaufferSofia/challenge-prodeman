@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import "@/styles/font.css";
 import ProviderReactQuery from "@/react-query/ProviderReactQuery";
 import { FavoritesProvider } from "@/context/favoritesContext";
+import NavbarComponent from "@/components/Navbar/NavbarComponent";
+import FooterComponent from "@/components/Footer/FooterComponent";
 
 export const metadata: Metadata = {
   title: "Marvel Web",
@@ -30,7 +32,11 @@ export default function RootLayout({
       </head>
       <body className="open-sans-regular">
         <ProviderReactQuery>
+          <header>
+            <NavbarComponent />
+          </header>
           <FavoritesProvider>{children}</FavoritesProvider>
+          <FooterComponent />
         </ProviderReactQuery>
       </body>
     </html>

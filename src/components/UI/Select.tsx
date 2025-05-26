@@ -20,7 +20,7 @@ export const Select = ({
     <select
       value={value}
       onChange={onChange}
-      className={`bg-secondaryWhite dark:bg-secondaryBlack px-3 py-2 rounded-md placeholder:text-textPrimary/80 dark:placeholder:text-textPrimary-dark ${className}`}
+      className={`bg-secondaryWhite cursor-pointer dark:bg-secondaryBlack px-5 py-2 rounded-md placeholder:text-textPrimary/80 dark:placeholder:text-textPrimary-dark ${className}`}
     >
       {arrayOptions.map((option) => (
         <option key={option.value} value={option.value}>

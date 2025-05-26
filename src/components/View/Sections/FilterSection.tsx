@@ -34,7 +34,7 @@ const FilterSection = ({
         <Input
           type="text"
           name="search"
-          placeholder="Buscar por nombre"
+          placeholder="Search by name"
           value={search}
           onChange={handleChangeSearch}
         />

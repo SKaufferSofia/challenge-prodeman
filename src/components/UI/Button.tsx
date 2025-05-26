@@ -18,7 +18,7 @@ export const Button = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={className}
+      className={`${className} cursor-pointer`}
     >
       {children}
     </button>

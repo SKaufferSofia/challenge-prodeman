@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-import { Button } from "@/components/UI/Button";
 import { CardsComponent } from "@/components/UI/Cards";
 import { Spiner } from "@/components/UI/Spiner";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { ICharacterFront, IComicFront, ISeriesFront } from "@/interfaces/data";
 import { FavoriteItem, FavoritesContextType } from "@/context/favoritesContext";
+import PaginationSection from "./PaginationSection";
 interface CardsSectionProps {
   data:
     | ICharacterFront[]
@@ -41,15 +40,15 @@ const CardsSection = ({
       {isLoading ? (
         <Spiner />
       ) : isError ? (
-        <p className="anton-sc-regular text-base md:text-xl">
+        <p className="h-[50vh] anton-sc-regular text-base md:text-xl">
           Something went wrong.
         </p>
       ) : search && data?.length === 0 ? (
-        <p className="anton-sc-regular text-base md:text-xl">
+        <p className="h-[50vh] anton-sc-regular text-base md:text-xl">
           No search results found.
         </p>
       ) : data.length === 0 ? (
-        <p className="anton-sc-regular text-base md:text-xl">
+        <p className="h-[50vh] anton-sc-regular text-base md:text-xl">
           No results found or no favorites.
         </p>
       ) : (
@@ -71,29 +70,14 @@ const CardsSection = ({
                   />
                 ))}
           </div>
-          <div className="flex justify-center items-center gap-2 mt-8">
-            <Button
-              onClick={() => {
-                setPage(Math.max(page - 1, 1));
-                scrollToGrid();
-              }}
-              disabled={page === 1}
-            >
-              <FaArrowLeft className="h-4 w-4" />
-            </Button>
-            <Button>
-              {page} de {totalPages}
-            </Button>
-            <Button
-              onClick={() => {
-                setPage(Math.min(page + 1, totalPages));
-                scrollToGrid();
-              }}
-              disabled={page === totalPages}
-            >
-              <FaArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
+          {!(page === 1 && totalPages === 1) && (
+            <PaginationSection
+              page={page}
+              totalPages={totalPages}
+              setPage={setPage}
+              scrollToGrid={scrollToGrid}
+            />
+          )}
         </>
       )}
     </section>

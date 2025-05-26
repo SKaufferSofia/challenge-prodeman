@@ -15,8 +15,10 @@ import {
   handleChangeFilter,
   selectedFilter,
 } from "@/utils/utils";
+import useScrollToSection from "@/hooks/useScrollToSection";
 
 const FavoritesView = () => {
+  useScrollToSection();
   const { favorites, isFavorite, toggleFavorite } = useFavorites();
   const { page, setPage, selectedCategory, setSelectedCategory } =
     usePageCategory();
@@ -41,8 +43,15 @@ const FavoritesView = () => {
 
   return (
     <section>
-      <HeroSection />
+      <HeroSection
+        section="favorites"
+        url="https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/mi_wallpaper_mas_dsk_01.jpg"
+        title="YOUR MULTIVERSE"
+        title2="FAVORITES"
+        description="This is where your favorite Marvel characters, comics, and series come together. Return anytime to explore more and keep building your ultimate hero (or villain) collection."
+      />
       <HeaderSection
+        sectionId="favorites"
         data={filteredData(
           selectedCategory,
           data || [],

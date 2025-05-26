@@ -13,6 +13,7 @@ import { FavoriteItem, FavoritesContextType } from "@/context/favoritesContext";
 import { ICharacterFront, IComicFront, ISeriesFront } from "@/interfaces/data";
 
 interface HeaderSectionProps {
+  sectionId: string;
   data:
     | ICharacterFront[]
     | IComicFront[]
@@ -37,6 +38,7 @@ interface HeaderSectionProps {
 }
 
 const HeaderSection = ({
+  sectionId,
   data,
   isLoading,
   isError,
@@ -61,9 +63,13 @@ const HeaderSection = ({
       gridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+  console.log("sectionId", sectionId);
 
   return (
-    <section className="flex flex-col items-center justify-center py-10 px-10 md:px-20 lg:px-40 w-full h-full">
+    <section
+      id={sectionId}
+      className="flex flex-col items-center justify-center py-10 px-10 md:px-20 lg:px-40 w-full h-full"
+    >
       <SectionCategory
         gridRef={gridRef}
         categories={categories}

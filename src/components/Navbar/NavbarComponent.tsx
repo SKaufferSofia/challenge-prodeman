@@ -8,6 +8,27 @@ import { FaXmark } from "react-icons/fa6";
 
 const NavbarComponent = () => {
   const [openToggle, setOpenToggle] = React.useState(false);
+  const [theme, setTheme] = React.useState("light");
+  const [bgColor, setBgColor] = React.useState(
+    "bg-transparent text-textPrimary-dark"
+  );
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 3) {
+        setBgColor(
+          "bg-secondaryWhite text-textPrimary"
+          //  theme === "dark" ? "bg-secondaryBlack" : "bg-secondaryWhite"
+        );
+      } else {
+        setBgColor("bg-transparent text-textPrimary-dark");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [theme]);
 
   //ESTILOS
   const itemClass =
@@ -15,16 +36,23 @@ const NavbarComponent = () => {
   const itemClassResponsive = "text-xl anton-sc-regular text-textPrimary";
 
   return (
-    <nav className="bg-secondaryWhite dark:bg-secondaryBlack p-5">
+    <nav
+      className={`${bgColor} p-5 fixed top-0 left-0 w-full z-50 transition-all duration-300`}
+    >
       {/* TOP BAR */}
       <div className="flex justify-between items-center md:justify-center md:gap-16">
-        <Link href="/home">
+        <Link href="/">
           <p className={itemClass}>HOME</p>
         </Link>
 
         <Image
           src="https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/marvel-logo.png"
           alt="logo"
+          className={`${
+            bgColor.includes("transparent")
+              ? "md:filter md:grayscale md:brightness-75 md:opacity-20 transition-all duration-300"
+              : ""
+          }`}
           width={170}
           height={72}
         />

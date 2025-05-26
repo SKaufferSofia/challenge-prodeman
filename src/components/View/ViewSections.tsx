@@ -1,14 +1,13 @@
-import FooterComponent from "@/components/Footer/FooterComponent";
-import NavbarComponent from "@/components/Navbar/NavbarComponent";
-import HomeView from "@/components/View/Home/HomeView";
-import Image from "next/image";
+"use client";
 import React from "react";
+import HomeView from "./Home/HomeView";
+import Image from "next/image";
+import useScrollToSection from "@/hooks/useScrollToSection";
 
-const HomePage = () => {
+const ViewSections = () => {
+  useScrollToSection();
   return (
     <main>
-      <NavbarComponent />
-
       <HomeView />
 
       <section className="w-full">
@@ -20,9 +19,8 @@ const HomePage = () => {
           height={3000}
         />
       </section>
-      <FooterComponent />
     </main>
   );
 };
 
-export default HomePage;
+export default ViewSections;

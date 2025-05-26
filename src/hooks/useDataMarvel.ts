@@ -34,6 +34,7 @@ const useDataMarvel = (
       const series = seriesResponse(
         (data && data.results ? data.results : []) as ISeries[]
       );
+      console.log("search", search);
 
       return {
         ...data,
