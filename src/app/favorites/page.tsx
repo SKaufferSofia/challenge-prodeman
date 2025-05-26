@@ -1,12 +1,20 @@
-import NavbarComponent from "@/components/Navbar/NavbarComponent";
+import { Spiner } from "@/components/UI/Spiner";
 import FavoritesView from "@/components/View/Favorites/FavoritesView";
 import React from "react";
+import { Suspense } from "react";
 
 const FavoritePage = () => {
   return (
     <main>
-      <NavbarComponent />
-      <FavoritesView />
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center h-screen">
+            <Spiner />
+          </div>
+        }
+      >
+        <FavoritesView />
+      </Suspense>
     </main>
   );
 };

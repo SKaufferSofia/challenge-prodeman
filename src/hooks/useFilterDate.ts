@@ -6,7 +6,6 @@ const useFilterDate = () => {
 
   function isDateInRange(dateString: string, filter: string): boolean {
     const date = new Date(dateString);
-    console.log("data", date);
 
     const now = new Date();
 
@@ -32,13 +31,10 @@ const useFilterDate = () => {
   }
 
   const filteredCharacters = (characters: ICharacterFront[]) => {
-    console.log("character", characters);
-
     return characters.filter((character) => {
       const matchesFilter =
         characterFilter === "all" ||
         isDateInRange(character.modified, characterFilter);
-      console.log("matchesFilter", matchesFilter);
 
       return matchesFilter;
     });

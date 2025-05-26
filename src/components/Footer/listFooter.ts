@@ -2,7 +2,7 @@ export const listFooter = [
   {
     id: 1,
     name: "Home",
-    href: "/home",
+    href: "/",
   },
   {
     id: 2,

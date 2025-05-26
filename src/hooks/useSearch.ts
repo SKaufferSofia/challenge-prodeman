@@ -1,5 +1,3 @@
-// hooks/useSearch.ts
-
 import { useState } from "react";
 
 const useSearch = () => {

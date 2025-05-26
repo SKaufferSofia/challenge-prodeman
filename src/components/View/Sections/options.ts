@@ -1,4 +1,4 @@
-import { IOption } from "@/components/UI/Select";
+import { IOption } from "@/interfaces/ui";
 
 export const limitOptions: IOption[] = [
   {
@@ -43,76 +43,76 @@ export const categories = [
 export const valueOptions: IOption[] = [
   {
     value: "all",
-    label: "Todas las fechas",
+    label: "All dates",
   },
   {
     value: "last5Years",
-    label: "Últimos 5 años",
+    label: "Last 5 years",
   },
   {
     value: "last10Years",
-    label: "Últimos 10 años",
+    label: "Last 10 years",
   },
   {
     value: "before2010",
-    label: "Antes de 2010",
+    label: "Before 2010",
   },
 ];
 
 export const valueOptionDate = [
   {
     value: "all",
-    label: "Todas las fechas",
+    label: "All dates",
   },
   {
     value: "startDateAsc",
-    label: "Fecha inicio (Más antigua)",
+    label: "Start date (Oldest)",
   },
   {
     value: "startDateDesc",
-    label: "Fecha inicio (Más reciente)",
+    label: "Start date (Latest)",
   },
   {
     value: "endDateAsc",
-    label: "Fecha fin (Más antigua)",
+    label: "Start date (Most recent)",
   },
   {
     value: "endDateDesc",
-    label: "Fecha fin (Más reciente)",
+    label: "End date (Most recent)",
   },
   {
     value: "ongoing",
-    label: "Eventos en curso",
+    label: "Ongoing events",
   },
   {
     value: "finished",
-    label: "Eventos finalizados",
+    label: "Finished events",
   },
 ];
 
-export const valueOptionPage = [
+export const valueOptionPage: IOption[] = [
   {
     value: "all",
-    label: "Todas las páginas",
+    label: "All pages",
   },
   {
     value: "lessThan50",
-    label: "Menos de 50 páginas",
+    label: "Less than 50 pages",
   },
   {
     value: "50to100",
-    label: "50-100 páginas",
+    label: "50–100 pages",
   },
   {
     value: "100to200",
-    label: "100-200 páginas",
+    label: "100–200 pages",
   },
   {
     value: "moreThan200",
-    label: "Más de 200 páginas",
+    label: "More than 200 pages",
   },
   {
     value: "noPages",
-    label: "Sin páginas definidas",
+    label: "No pages defined",
   },
 ];

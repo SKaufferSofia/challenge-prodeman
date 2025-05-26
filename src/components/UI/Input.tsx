@@ -1,12 +1,4 @@
-interface IInputProps {
-  ref?: React.RefObject<HTMLInputElement | null>;
-  type: string;
-  name: string;
-  placeholder: string;
-  className?: string;
-  value?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { IInputProps } from "@/interfaces/ui";
 
 export const Input = ({
   ref,
@@ -25,7 +17,7 @@ export const Input = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={`bg-secondaryWhite dark:bg-secondaryBlack px-3 py-2 rounded-md placeholder:text-textPrimary/80 dark:placeholder:text-textPrimary-dark ${className}`}
+      className={`appearance-none border border-background bg-secondaryWhite font-medium dark:bg-secondaryBlack px-3 py-2 rounded-md placeholder:text-textPrimary/80 dark:placeholder:text-textPrimary-dark  ${className} `}
     />
   );
 };

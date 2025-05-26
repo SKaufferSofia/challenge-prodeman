@@ -3,14 +3,8 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "./Button";
 import { FaHeart } from "react-icons/fa6";
-
-interface ICardsProps {
-  title: string;
-  description: string;
-  img: string;
-  favorites: boolean;
-  toggleFavorite: () => void;
-}
+import { SpinerImg } from "./Spiner";
+import { ICardsProps } from "@/interfaces/ui";
 
 export const CardsComponent = ({
   title,
@@ -19,17 +13,25 @@ export const CardsComponent = ({
   favorites,
   toggleFavorite,
 }: ICardsProps) => {
+  const [isLoading, setIsLoading] = React.useState(true);
   return (
     <div className="relative group rounded-lg overflow-hidden shadow-md ">
-      <Image
-        src={img}
-        alt="Spider-Man Logo"
-        width={1000}
-        height={1000}
-        className="w-full aspect-square object-cover transition-all duration-300 md:group-hover:blur-[1px] "
-      />
+      <div className="relative">
+        {isLoading && <SpinerImg />}
+        <Image
+          src={img}
+          alt="Spider-Man Logo"
+          priority={true}
+          unoptimized={true}
+          onLoad={() => setIsLoading(false)}
+          width={1000}
+          height={1000}
+          className="w-full aspect-square object-cover transition-all duration-300 md:group-hover:blur-[1px] "
+        />
+      </div>
+
       {favorites && (
-        <Button className="rounded-full group-hover:opacity-0 absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
+        <Button className="hidden rounded-full group-hover:opacity-0 md:absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
           <FaHeart className="h-5 w-5" />
         </Button>
       )}
@@ -44,10 +46,6 @@ export const CardsComponent = ({
         </p>
 
         <div className="flex justify-between items-center">
-          <Button className="text-textPrimary-dark bg-transparent translation-all duration-200 hover:bg-redPrimary text-sm px-3 py-1 rounded-md font-bold">
-            View more
-          </Button>
-
           <Button
             onClick={() => toggleFavorite()}
             className={`${
@@ -68,11 +66,14 @@ export const CardsComponent = ({
         </p>
 
         <div className="flex justify-between items-center">
-          <Button className="text-textPrimary-dark bg-redPrimary text-sm px-3 py-1 rounded-md">
-            View more
-          </Button>
-
-          <Button className="rounded-full p-2 text-textPrimary-dark bg-background-dark">
+          <Button
+            className={`rounded-full p-2   ${
+              favorites
+                ? "text-textPrimary-dark bg-redPrimary"
+                : "text-textPrimary-dark bg-background-dark"
+            }`}
+            onClick={() => toggleFavorite()}
+          >
             <FaHeart className="h-5 w-5" />
           </Button>
         </div>

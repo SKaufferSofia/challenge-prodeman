@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import HeroSection from "../Sections/HeroSection";
 import useSearch from "@/hooks/useSearch";
 import useDataMarvel from "@/hooks/useDataMarvel";
 import useLimitView from "@/hooks/useLimitView";
@@ -15,9 +14,12 @@ import {
   handleChangeFilter,
   selectedFilter,
 } from "@/utils/utils";
+import HeroSection from "../Sections/HeroSection";
+import useFilterImgNotFound from "@/hooks/useFilterImgNotFound";
 
 const HomeView = () => {
   const { search, handleChangeSearch } = useSearch();
+
   const { limit, handleChangeLimit } = useLimitView();
   const { page, setPage, selectedCategory, setSelectedCategory } =
     usePageCategory();
@@ -37,15 +39,24 @@ const HomeView = () => {
     useFilterPage();
   const { eventFilter, handleChangeEventFilter, filteredEventsDate } =
     useFilterSeries();
+  const { imgNotFound, handleChangeImg, filterDataImgNotFound } =
+    useFilterImgNotFound();
 
   return (
     <section>
-      <HeroSection />
-
+      <HeroSection
+        section="home"
+        url="https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/ehjgk76y2kv41.jpg"
+        title="EXPLORE THE"
+        title2="MARVEL UNIVERSE"
+        description="Discover iconic characters, comics, and epic events that shaped
+          generations."
+      />
       <HeaderSection
+        sectionId="home"
         data={filteredData(
           selectedCategory,
-          data || [],
+          filterDataImgNotFound(data || []),
           filteredCharacters,
           filteredComics,
           filteredEventsDate
@@ -75,9 +86,9 @@ const HomeView = () => {
           handleChangeEventFilter
         )}
         handleChangeSearch={handleChangeSearch}
+        checkboxChecked={imgNotFound}
+        handleChangeImg={handleChangeImg}
       />
-
-      {/* <HeaderSection /> */}
     </section>
   );
 };

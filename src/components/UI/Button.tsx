@@ -1,10 +1,4 @@
-export interface IButtonProps {
-  children: React.ReactNode;
-  className?: string;
-  type?: "button" | "submit" | "reset" | undefined;
-  onClick?: () => void;
-  disabled?: boolean;
-}
+import { IButtonProps } from "@/interfaces/ui";
 
 export const Button = ({
   children,
@@ -18,7 +12,7 @@ export const Button = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={className}
+      className={`${className} cursor-pointer`}
     >
       {children}
     </button>
