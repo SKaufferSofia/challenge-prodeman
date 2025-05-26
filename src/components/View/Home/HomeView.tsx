@@ -89,8 +89,6 @@ const HomeView = () => {
         checkboxChecked={imgNotFound}
         handleChangeImg={handleChangeImg}
       />
-
-      {/* <HeaderSection /> */}
     </section>
   );
 };

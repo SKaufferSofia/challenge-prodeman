@@ -24,7 +24,7 @@ const PaginationSection = ({
       }
     };
 
-    updateLimit(); // set on mount
+    updateLimit();
     window.addEventListener("resize", updateLimit);
     return () => window.removeEventListener("resize", updateLimit);
   }, []);

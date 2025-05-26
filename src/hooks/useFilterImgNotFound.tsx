@@ -22,7 +22,6 @@ const useFilterImgNotFound = () => {
 
   const filterDataImgNotFound = (
     data: ICharacterFront[] | IComicFront[] | ISeriesFront[] | []
-    //   value: boolean
   ) => {
     if (imgNotFound) {
       return data.filter((item) => !item.img.includes("image_not_available"));

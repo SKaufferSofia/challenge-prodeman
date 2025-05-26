@@ -9,7 +9,6 @@ import ThemeToggleSwiper from "./ThemeToggleSwiper";
 
 const NavbarComponent = () => {
   const [openToggle, setOpenToggle] = React.useState(false);
-  // const [theme, setTheme] = React.useState("light");
   const [bgColor, setBgColor] = React.useState(
     "bg-transparent text-textPrimary-dark"
   );
