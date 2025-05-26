@@ -8,6 +8,8 @@ const NotFoundView = () => {
       className="relative grid min-h-full w-full place-items-center text-textPrimary-dark"
       style={{
         backgroundImage: `url("https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/ip_page_marvel_banner_mobile_0d04586279.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="text-center z-10">
