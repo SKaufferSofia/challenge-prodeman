@@ -35,7 +35,7 @@ const CardsSection = ({
         <p className="h-[50vh] text-center anton-sc-regular text-base md:text-xl">
           No search results found.
         </p>
-      ) : selectedFilter && data?.length === 0 ? (
+      ) : selectedFilter && data?.length === 0 && sectionId !== "favorites" ? (
         <div className="h-[50vh] flex flex-col justify-between">
           <p className="text-center anton-sc-regular text-base md:text-xl">
             No results found. Try changing the page, filters, cards per view, or
