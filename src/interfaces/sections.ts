@@ -15,7 +15,7 @@ export interface CardsSectionProps {
   setPage: (page: number) => void;
   totalPages: number;
   search: string;
-  scrollToGrid: () => void;
+  scrollToGrid: (category: string) => void;
   isFavorite: FavoritesContextType["isFavorite"];
   toggleFavorite: FavoritesContextType["toggleFavorite"];
   selectedFilter: string;
@@ -62,6 +62,7 @@ export interface HeaderSectionProps {
 
 export interface HeroSectionProps {
   section: string;
+  sectionId: string;
   url: string;
   title: string;
   title2: string;
@@ -81,5 +82,5 @@ export type SectionCategoryProps = {
   selectedCategory: string;
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-  scrollToGrid: () => void;
+  scrollToGrid: (name: string) => void;
 };

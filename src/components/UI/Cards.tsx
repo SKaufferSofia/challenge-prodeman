@@ -5,6 +5,7 @@ import { Button } from "./Button";
 import { FaHeart } from "react-icons/fa6";
 import { SpinerImg } from "./Spiner";
 import { ICardsProps } from "@/interfaces/ui";
+import { motion } from "framer-motion";
 
 export const CardsComponent = ({
   title,
@@ -15,7 +16,11 @@ export const CardsComponent = ({
 }: ICardsProps) => {
   const [isLoading, setIsLoading] = React.useState(true);
   return (
-    <div className="relative group rounded-lg overflow-hidden shadow-md ">
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.3 }}
+      className="relative group rounded-lg overflow-hidden shadow-md cursor-pointer"
+    >
       <div className="relative">
         {isLoading && <SpinerImg />}
         <Image
@@ -31,9 +36,13 @@ export const CardsComponent = ({
       </div>
 
       {favorites && (
-        <Button className="hidden md:block rounded-full group-hover:opacity-0 absolute top-2 right-2 p-2 text-textPrimary-dark bg-redPrimary">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="hidden md:block rounded-full group-hover:opacity-0 absolute bottom-4 left-4 p-2 text-textPrimary-dark bg-redPrimary"
+        >
           <FaHeart className="h-5 w-5" />
-        </Button>
+        </motion.div>
       )}
 
       <div className="hidden absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-secondaryBlack/20 to-black text-white p-4 transition-all duration-500 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 md:flex flex-col justify-end gap-2 z-10">
@@ -47,10 +56,11 @@ export const CardsComponent = ({
 
         <div className="flex justify-between items-center">
           <Button
+            type="button"
             onClick={() => toggleFavorite()}
             className={`${
               favorites ? "bg-redPrimary" : "bg-background-dark"
-            } cursor-pointer rounded-full p-2 text-textPrimary-dark  translation-all duration-200 hover:scale-110 hover:bg-redPrimary`}
+            } cursor-pointer rounded-full p-2 text-textPrimary-dark hover:bg-redPrimary`}
           >
             <FaHeart className="h-5 w-5" />
           </Button>
@@ -78,6 +88,6 @@ export const CardsComponent = ({
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

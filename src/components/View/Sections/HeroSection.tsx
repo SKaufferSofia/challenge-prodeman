@@ -5,6 +5,7 @@ import { FaArrowDown } from "react-icons/fa";
 
 const HeroSection = ({
   section,
+  sectionId,
   url,
   title,
   title2,
@@ -29,12 +30,12 @@ const HeroSection = ({
           {description}
         </p>
         {section === "home" ? (
-          <Link href={{ pathname: "/", query: { section: "home" } }}>
+          <Link href={{ pathname: "/", query: { section: sectionId } }}>
             <FaArrowDown className="animate-bounce mx-auto mt-8 text-3xl" />
           </Link>
         ) : (
           <Link
-            href={{ pathname: "/favorites", query: { section: "favorites" } }}
+            href={{ pathname: "/favorites", query: { section: sectionId } }}
           >
             <FaArrowDown className="animate-bounce mx-auto mt-8 text-3xl" />
           </Link>

@@ -26,7 +26,7 @@ const SectionCategory = ({
           onClick={() => {
             setSelectedCategory(category.name);
             setPage(1);
-            scrollToGrid();
+            scrollToGrid(category.name);
           }}
         >
           {category.name}

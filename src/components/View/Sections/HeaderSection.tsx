@@ -34,9 +34,13 @@ const HeaderSection = ({
 }: HeaderSectionProps) => {
   const gridRef = React.useRef<HTMLDivElement | null>(null);
 
-  const scrollToGrid = () => {
+  const scrollToGrid = (categoryName: string) => {
     if (gridRef.current) {
       gridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("section", categoryName);
+      window.history.pushState(null, "", url.toString());
     }
   };
 
@@ -81,7 +85,7 @@ const HeaderSection = ({
         setPage={setPage}
         totalPages={totalPages}
         search={search}
-        scrollToGrid={scrollToGrid}
+        scrollToGrid={() => scrollToGrid(selectedCategory)}
         isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
         selectedFilter={selectedFilter}

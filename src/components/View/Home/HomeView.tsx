@@ -42,10 +42,13 @@ const HomeView = () => {
   const { imgNotFound, handleChangeImg, filterDataImgNotFound } =
     useFilterImgNotFound();
 
+  console.log("selectedCategory", selectedCategory);
+
   return (
     <section>
       <HeroSection
         section="home"
+        sectionId={selectedCategory}
         url="https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/ehjgk76y2kv41.jpg"
         title="EXPLORE THE"
         title2="MARVEL UNIVERSE"
@@ -53,7 +56,7 @@ const HomeView = () => {
           generations."
       />
       <HeaderSection
-        sectionId="home"
+        sectionId={selectedCategory}
         data={filteredData(
           selectedCategory,
           filterDataImgNotFound(data || []),

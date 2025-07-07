@@ -6,6 +6,7 @@ import PaginationSection from "./PaginationSection";
 import { Button } from "@/components/UI/Button";
 import Link from "next/link";
 import { CardsSectionProps } from "@/interfaces/sections";
+import { AnimatePresence, motion } from "framer-motion";
 
 const CardsSection = ({
   sectionId,
@@ -46,7 +47,7 @@ const CardsSection = ({
             page={page}
             totalPages={totalPages}
             setPage={setPage}
-            scrollToGrid={scrollToGrid}
+            scrollToGrid={() => scrollToGrid(sectionId)}
           />
         </div>
       ) : sectionId === "favorites" && data?.length === 0 ? (
@@ -54,7 +55,10 @@ const CardsSection = ({
           <p className="anton-sc-regular text-base md:text-xl">
             You have no favorites yet.
           </p>
-          <Button className="md:w-1/5 p-2 hover:scale-105 transition-all duration-200 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite ">
+          <Button
+            type="button"
+            className="md:w-1/5 p-2 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite "
+          >
             <Link href={{ pathname: "/", query: { section: "home" } }}>
               Add Favorites
             </Link>
@@ -62,25 +66,33 @@ const CardsSection = ({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {Array.isArray(data) &&
-              data.map((item) => (
-                <CardsComponent
-                  key={item.id}
-                  title={item.name}
-                  img={item.img}
-                  description={item.description}
-                  favorites={isFavorite(item.id)}
-                  toggleFavorite={() => toggleFavorite(item)}
-                />
-              ))}
-          </div>
+          <motion.div
+            layout
+            // initial="hidden"
+            // whileInView="visible"
+            // viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          >
+            <AnimatePresence mode="wait">
+              {Array.isArray(data) &&
+                data.map((item) => (
+                  <CardsComponent
+                    key={item.id}
+                    title={item.name}
+                    img={item.img}
+                    description={item.description}
+                    favorites={isFavorite(item.id)}
+                    toggleFavorite={() => toggleFavorite(item)}
+                  />
+                ))}
+            </AnimatePresence>
+          </motion.div>
           {!(page === 1 && totalPages === 1) && (
             <PaginationSection
               page={page}
               totalPages={totalPages}
               setPage={setPage}
-              scrollToGrid={scrollToGrid}
+              scrollToGrid={() => scrollToGrid(sectionId)}
             />
           )}
         </>

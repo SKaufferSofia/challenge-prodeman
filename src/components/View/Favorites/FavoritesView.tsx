@@ -48,6 +48,7 @@ const FavoritesView = () => {
     <section>
       <HeroSection
         section="favorites"
+        sectionId={selectedCategory}
         url="https://mibucket-personal-sofia.s3.us-east-1.amazonaws.com/Challenge+prodeman/mi_wallpaper_mas_dsk_01.jpg"
         title="YOUR MULTIVERSE"
         title2="FAVORITES"
@@ -55,7 +56,7 @@ const FavoritesView = () => {
       />
 
       <HeaderSection
-        sectionId="favorites"
+        sectionId={selectedCategory}
         data={filteredData(
           selectedCategory,
           filterDataImgNotFound(data || []),
