@@ -2,6 +2,18 @@ export interface IThumbnail {
   path: string;
   extension: string;
 }
+
+export interface IDetailsMore {
+  name: string;
+  resourceURI: string;
+  type?: string;
+}
+
+export interface IUrlExtension {
+  type: string;
+  url: string;
+}
+
 export interface IBaseMarvel {
   id: number;
   modified: string;
@@ -11,12 +23,36 @@ export interface IBaseMarvel {
 export interface ICharacter extends IBaseMarvel {
   name: string;
   description: string;
+  comics?: {
+    items: IDetailsMore[];
+  };
+  series?: {
+    items: IDetailsMore[];
+  };
+  stories?: {
+    items: IDetailsMore[];
+  };
+  events?: {
+    items: IDetailsMore[];
+  };
+  urls?: IUrlExtension[];
 }
 
 export interface IComic extends IBaseMarvel {
   title: string;
   description: string;
   pageCount: number;
+  urls?: IUrlExtension[];
+  series?: IDetailsMore;
+  characters?: {
+    items: IDetailsMore[];
+  };
+  stories?: {
+    items: IDetailsMore[];
+  };
+  events?: {
+    items: IDetailsMore[];
+  };
 }
 
 export interface ISeries extends IBaseMarvel {
@@ -24,6 +60,19 @@ export interface ISeries extends IBaseMarvel {
   description: string;
   startYear: number;
   endYear: number;
+  urls?: IUrlExtension[];
+  characters?: {
+    items: IDetailsMore[];
+  };
+  stories?: {
+    items: IDetailsMore[];
+  };
+  comics?: {
+    items: IDetailsMore[];
+  };
+  events?: {
+    items: IDetailsMore[];
+  };
 }
 
 export type MarvelItem = ICharacter | IComic | ISeries;
@@ -33,6 +82,12 @@ export interface IDataMarvel {
   total: number;
   count: number;
   results: MarvelItem[];
+}
+
+export interface IDataMarvelDetails {
+  data: {
+    results: MarvelItem[];
+  };
 }
 
 export interface ICharacterFront {

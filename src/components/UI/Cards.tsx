@@ -6,12 +6,15 @@ import { FaHeart } from "react-icons/fa6";
 import { SpinerImg } from "./Spiner";
 import { ICardsProps } from "@/interfaces/ui";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const CardsComponent = ({
+  id,
   title,
   description,
   img,
   favorites,
+  category,
   toggleFavorite,
 }: ICardsProps) => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -63,6 +66,14 @@ export const CardsComponent = ({
             } cursor-pointer rounded-full p-2 text-textPrimary-dark hover:bg-redPrimary`}
           >
             <FaHeart className="h-5 w-5" />
+          </Button>
+          <Button
+            type="button"
+            className=" p-2 font-semibold hover:bg-redPrimary hover:dark:bg-redPrimary-dark text-secondaryWhite "
+          >
+            <Link href={{ pathname: `/${id}`, query: { section: category } }}>
+              See more
+            </Link>
           </Button>
         </div>
       </div>

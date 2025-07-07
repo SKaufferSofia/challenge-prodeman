@@ -7,10 +7,12 @@ export interface IButtonProps {
 }
 
 export interface ICardsProps {
+  id: number;
   title: string;
   description: string;
   img: string;
   favorites: boolean;
+  category: string;
   toggleFavorite: () => void;
 }
 

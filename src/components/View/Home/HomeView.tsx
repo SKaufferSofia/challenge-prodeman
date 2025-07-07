@@ -42,8 +42,6 @@ const HomeView = () => {
   const { imgNotFound, handleChangeImg, filterDataImgNotFound } =
     useFilterImgNotFound();
 
-  console.log("selectedCategory", selectedCategory);
-
   return (
     <section>
       <HeroSection
@@ -56,6 +54,7 @@ const HomeView = () => {
           generations."
       />
       <HeaderSection
+        section="home"
         sectionId={selectedCategory}
         data={filteredData(
           selectedCategory,

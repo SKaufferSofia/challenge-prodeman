@@ -56,6 +56,7 @@ const FavoritesView = () => {
       />
 
       <HeaderSection
+        section="favorites"
         sectionId={selectedCategory}
         data={filteredData(
           selectedCategory,

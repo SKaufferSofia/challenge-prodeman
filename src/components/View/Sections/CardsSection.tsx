@@ -9,6 +9,7 @@ import { CardsSectionProps } from "@/interfaces/sections";
 import { AnimatePresence, motion } from "framer-motion";
 
 const CardsSection = ({
+  section,
   sectionId,
   data,
   isLoading,
@@ -36,7 +37,7 @@ const CardsSection = ({
         <p className="h-[50vh] text-center anton-sc-regular text-base md:text-xl">
           No search results found.
         </p>
-      ) : selectedFilter && data?.length === 0 && sectionId !== "favorites" ? (
+      ) : selectedFilter && data?.length === 0 && section !== "favorites" ? (
         <div className="h-[50vh] flex flex-col justify-between">
           <p className="text-center anton-sc-regular text-base md:text-xl">
             No results found. Try changing the page, filters, cards per view, or
@@ -50,7 +51,7 @@ const CardsSection = ({
             scrollToGrid={() => scrollToGrid(sectionId)}
           />
         </div>
-      ) : sectionId === "favorites" && data?.length === 0 ? (
+      ) : section === "favorites" && data?.length === 0 ? (
         <div className="h-[50vh]  flex flex-col items-center justify-start gap-4">
           <p className="anton-sc-regular text-base md:text-xl">
             You have no favorites yet.
@@ -78,10 +79,12 @@ const CardsSection = ({
                 data.map((item) => (
                   <CardsComponent
                     key={item.id}
+                    id={item.id}
                     title={item.name}
                     img={item.img}
                     description={item.description}
                     favorites={isFavorite(item.id)}
+                    category={item.category}
                     toggleFavorite={() => toggleFavorite(item)}
                   />
                 ))}

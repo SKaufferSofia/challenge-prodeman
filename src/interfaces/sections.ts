@@ -2,6 +2,7 @@ import { ICharacterFront, IComicFront, ISeriesFront } from "@/interfaces/data";
 import { FavoriteItem, FavoritesContextType } from "@/context/favoritesContext";
 import { IOption } from "./ui";
 export interface CardsSectionProps {
+  section: string;
   sectionId: string;
   data:
     | ICharacterFront[]
@@ -34,6 +35,7 @@ export interface FilterSectionProps {
 }
 
 export interface HeaderSectionProps {
+  section: string;
   sectionId: string;
   data:
     | ICharacterFront[]
