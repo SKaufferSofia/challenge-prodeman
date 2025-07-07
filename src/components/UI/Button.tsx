@@ -1,3 +1,4 @@
+"use client";
 import { IButtonProps } from "@/interfaces/ui";
 import { motion } from "framer-motion";
 
