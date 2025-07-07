@@ -28,11 +28,23 @@ const useDataMarvel = (
         (data && data.results ? data.results : []) as ICharacter[]
       );
       const comics = comicsResponse(
-        (data && data.results ? data.results : []) as IComic[]
+        (data && data.results
+          ? (data.results as IComic[]).filter(
+              (item) =>
+                typeof item.title === "string" &&
+                !item.title.includes("Star Wars")
+            )
+          : []) as IComic[]
       );
 
       const series = seriesResponse(
-        (data && data.results ? data.results : []) as ISeries[]
+        (data && data.results
+          ? (data.results as ISeries[]).filter(
+              (item) =>
+                typeof item.title === "string" &&
+                !item.title.includes("Star Wars")
+            )
+          : []) as ISeries[]
       );
 
       return {
