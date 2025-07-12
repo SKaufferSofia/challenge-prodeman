@@ -67,14 +67,14 @@ export const CardsComponent = ({
           >
             <FaHeart className="h-5 w-5" />
           </Button>
-          <Button
-            type="button"
-            className=" p-2 font-semibold hover:bg-redPrimary hover:dark:bg-redPrimary-dark text-secondaryWhite "
-          >
-            <Link href={{ pathname: `/${id}`, query: { section: category } }}>
+          <Link href={{ pathname: `/${id}`, query: { section: category } }}>
+            <Button
+              type="button"
+              className=" p-2 font-semibold hover:bg-redPrimary hover:dark:bg-redPrimary-dark text-secondaryWhite "
+            >
               See more
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
 

@@ -40,3 +40,22 @@ export const getMarvelId = async ({
     console.error(error);
   }
 };
+
+export const getMarvelDetails = async ({
+  category,
+  id,
+  categoryDetails,
+}: {
+  category: string;
+  id: string;
+  categoryDetails: string;
+}) => {
+  try {
+    const response = await axios.get(
+      `/api/marvel/?category=${category}/${id}/${categoryDetails}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
