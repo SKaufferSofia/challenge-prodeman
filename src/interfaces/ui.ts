@@ -7,10 +7,12 @@ export interface IButtonProps {
 }
 
 export interface ICardsProps {
+  id: number;
   title: string;
   description: string;
   img: string;
   favorites: boolean;
+  category: string;
   toggleFavorite: () => void;
 }
 
@@ -34,4 +36,13 @@ export interface ISelectProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
+}
+
+export interface CarouselCardProps {
+  cardsCarousel: {
+    id: string;
+    image: string;
+    title: string;
+  }[];
+  onClick?: (id: string) => void;
 }

@@ -2,6 +2,11 @@ export interface IThumbnail {
   path: string;
   extension: string;
 }
+export interface IUrlExtension {
+  type: string;
+  url: string;
+}
+
 export interface IBaseMarvel {
   id: number;
   modified: string;
@@ -11,12 +16,35 @@ export interface IBaseMarvel {
 export interface ICharacter extends IBaseMarvel {
   name: string;
   description: string;
+  comics?: {
+    collectionURI: string;
+  };
+  series?: {
+    collectionURI: string;
+  };
+  stories?: {
+    collectionURI: string;
+  };
+  events?: {
+    collectionURI: string;
+  };
+  urls?: IUrlExtension[];
 }
 
 export interface IComic extends IBaseMarvel {
   title: string;
   description: string;
   pageCount: number;
+  urls?: IUrlExtension[];
+  characters?: {
+    collectionURI: string;
+  };
+  stories?: {
+    collectionURI: string;
+  };
+  events?: {
+    collectionURI: string;
+  };
 }
 
 export interface ISeries extends IBaseMarvel {
@@ -24,6 +52,19 @@ export interface ISeries extends IBaseMarvel {
   description: string;
   startYear: number;
   endYear: number;
+  urls?: IUrlExtension[];
+  characters?: {
+    collectionURI: string;
+  };
+  stories?: {
+    collectionURI: string;
+  };
+  comics?: {
+    collectionURI: string;
+  };
+  events?: {
+    collectionURI: string;
+  };
 }
 
 export type MarvelItem = ICharacter | IComic | ISeries;
@@ -35,6 +76,12 @@ export interface IDataMarvel {
   results: MarvelItem[];
 }
 
+export interface IDataMarvelDetails {
+  data: {
+    results: MarvelItem[];
+  };
+}
+
 export interface ICharacterFront {
   id: number;
   name: string;
@@ -44,6 +91,11 @@ export interface ICharacterFront {
   urlId: string;
   favorite: boolean;
   category: string;
+  comics?: IComicFront[];
+  series?: ISeriesFront[];
+  detailUrl?: string;
+  wikiUrl?: string;
+  comicsUrl?: string;
 }
 
 export interface IComicFront {
@@ -56,6 +108,10 @@ export interface IComicFront {
   urlId: string;
   favorite: boolean;
   category: string;
+  characters?: ICharacterFront[];
+  detailUrl?: string;
+  wikiUrl?: string;
+  comicsUrl?: string;
 }
 
 export interface ISeriesFront {
@@ -69,4 +125,9 @@ export interface ISeriesFront {
   urlId: string;
   favorite: boolean;
   category: string;
+  characters?: ICharacterFront[];
+  comics?: IComicFront[];
+  detailUrl?: string;
+  wikiUrl?: string;
+  comicsUrl?: string;
 }

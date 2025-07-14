@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY; //"1f1fbcbb67c53cc2877b8e35ee18802a";
-const hash = process.env.NEXT_PUBLIC_MARVEL_HASH; //"7034f53029aec1c396828144ed6c27ac";
+const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY;
+const hash = process.env.NEXT_PUBLIC_MARVEL_HASH;
 
 export async function GET(req: NextRequest) {
   const ts = "1";
@@ -9,8 +9,6 @@ export async function GET(req: NextRequest) {
 
   const category = searchParams.get("category");
   const id = searchParams.get("id");
-  // const limit = searchParams.get("limit") || "20";
-  // const offset = searchParams.get("offset") || "0";
   const search = searchParams.get("search");
   const modifiedSince = searchParams.get("modifiedSince");
 
@@ -22,8 +20,7 @@ export async function GET(req: NextRequest) {
   }
 
   const queryParams = new URLSearchParams();
-  // queryParams.set("limit", limit);
-  // queryParams.set("offset", offset);
+
   queryParams.set("ts", ts);
   queryParams.set("apikey", publicKey || "");
   queryParams.set("hash", hash || "");
@@ -40,7 +37,7 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  const url = `https://gateway.marvel.com/v1/public/${category}/${id}?${queryParams.toString()}`;
+  const url = `https://gateway.marvel.com/v1/public/${category}?${queryParams.toString()}/${id}`;
 
   try {
     const response = await fetch(url);

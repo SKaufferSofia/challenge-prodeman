@@ -12,6 +12,7 @@ import FilterSection from "./FilterSection";
 import { HeaderSectionProps } from "@/interfaces/sections";
 
 const HeaderSection = ({
+  section,
   sectionId,
   data,
   isLoading,
@@ -77,6 +78,7 @@ const HeaderSection = ({
       />
 
       <CardsSection
+        section={section}
         sectionId={sectionId}
         data={data || []}
         isLoading={isLoading}
