@@ -17,40 +17,33 @@ const useDataMarvelDetails = (selectedCategory: string, id: string) => {
       });
       const data = response.data as IDataMarvel;
 
-      const character = await charactersDetailsResponse(
-        (data && data.results ? data.results : []) as ICharacter[]
-      );
-      const comic = comicsResponse(
-        (data && data.results
-          ? (data.results as IComic[]).filter(
-              (item) =>
-                typeof item.title === "string" &&
-                !item.title.includes("Star Wars")
-            )
-          : []) as IComic[]
-      );
+      // Preprocesar los resultados comunes
+      const results = data?.results ?? [];
 
-      const serie = seriesResponse(
-        (data && data.results
-          ? (data.results as ISeries[]).filter(
-              (item) =>
-                typeof item.title === "string" &&
-                !item.title.includes("Star Wars")
-            )
-          : []) as ISeries[]
-      );
+      if (selectedCategory === "characters") {
+        const character = await charactersDetailsResponse(
+          results as ICharacter[]
+        );
+        return { ...data, results: character };
+      }
 
-      return {
-        ...data,
-        results:
-          selectedCategory === "characters"
-            ? character
-            : selectedCategory === "comics"
-            ? comic
-            : selectedCategory === "series"
-            ? serie
-            : [],
-      };
+      if (selectedCategory === "comics") {
+        const comic = comicsResponse(results as IComic[]);
+        return { ...data, results: comic };
+      }
+
+      if (selectedCategory === "series") {
+        const serie = seriesResponse(
+          (results as ISeries[]).filter(
+            (item) =>
+              typeof item.title === "string" &&
+              !item.title.includes("Star Wars")
+          )
+        );
+        return { ...data, results: serie };
+      }
+
+      return { ...data, results: [] };
     },
     enabled: !!selectedCategory,
     staleTime: 1000 * 60 * 5,

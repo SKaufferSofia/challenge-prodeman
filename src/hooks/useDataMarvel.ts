@@ -24,39 +24,52 @@ const useDataMarvel = (
       });
       const data = response.data as IDataMarvel;
 
-      const characters = charactersResponse(
-        (data && data.results ? data.results : []) as ICharacter[]
-      );
-      const comics = comicsResponse(
-        (data && data.results
-          ? (data.results as IComic[]).filter(
-              (item) =>
-                typeof item.title === "string" &&
-                !item.title.includes("Star Wars")
-            )
-          : []) as IComic[]
-      );
-
-      const series = seriesResponse(
-        (data && data.results
-          ? (data.results as ISeries[]).filter(
-              (item) =>
-                typeof item.title === "string" &&
-                !item.title.includes("Star Wars")
-            )
-          : []) as ISeries[]
-      );
+      if (selectedCategory === "characters") {
+        const characters = charactersResponse(
+          (data && data.results ? data.results : []) as ICharacter[]
+        );
+        return {
+          ...data,
+          results: characters,
+        };
+      }
+      if (selectedCategory === "comics") {
+        const comics = comicsResponse(
+          (data && data.results
+            ? (data.results as IComic[]).filter(
+                (item) =>
+                  typeof item.title === "string" &&
+                  !item.title.includes("Star Wars")
+              )
+            : []) as IComic[]
+        );
+        return {
+          ...data,
+          results: comics,
+        };
+      }
+      if (selectedCategory === "series") {
+        const series = seriesResponse(
+          (data && data.results
+            ? (data.results as ISeries[]).filter(
+                (item) =>
+                  typeof item.title === "string" &&
+                  !item.title.includes("Star Wars")
+              )
+            : []) as ISeries[]
+        );
+        return {
+          ...data,
+          results: series,
+        };
+      }
 
       return {
         ...data,
-        results:
-          selectedCategory === "characters"
-            ? characters
-            : selectedCategory === "comics"
-            ? comics
-            : selectedCategory === "series"
-            ? series
-            : [],
+        results: (data && data.results ? data.results : []) as
+          | ICharacter[]
+          | IComic[]
+          | ISeries[],
       };
     },
     enabled: !!selectedCategory && !!limit && !!page,
