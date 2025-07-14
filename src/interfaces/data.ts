@@ -36,9 +36,6 @@ export interface IComic extends IBaseMarvel {
   description: string;
   pageCount: number;
   urls?: IUrlExtension[];
-  series?: {
-    collectionURI: string;
-  };
   characters?: {
     collectionURI: string;
   };
@@ -95,9 +92,7 @@ export interface ICharacterFront {
   favorite: boolean;
   category: string;
   comics?: IComicFront[];
-  //  events?: IEventFront[];
   series?: ISeriesFront[];
-  //stories?: IStoryFront[];
   detailUrl?: string;
   wikiUrl?: string;
   comicsUrl?: string;
@@ -113,6 +108,7 @@ export interface IComicFront {
   urlId: string;
   favorite: boolean;
   category: string;
+  characters?: ICharacterFront[];
   detailUrl?: string;
   wikiUrl?: string;
   comicsUrl?: string;
@@ -129,6 +125,8 @@ export interface ISeriesFront {
   urlId: string;
   favorite: boolean;
   category: string;
+  characters?: ICharacterFront[];
+  comics?: IComicFront[];
   detailUrl?: string;
   wikiUrl?: string;
   comicsUrl?: string;

@@ -15,6 +15,7 @@ const DetailsSection = ({ id }: { id: string }) => {
   );
 
   console.log("data", data);
+  console.log("isError", isError);
 
   return (
     <main className="w-full  mt-36 p-10 flex flex-col text-2xl items-center justify-center">
@@ -38,6 +39,26 @@ const DetailsSection = ({ id }: { id: string }) => {
             <Link href={item.detailUrl as string} target="_blank">
               <Button>Read more</Button>
             </Link>
+            {"characters" in item &&
+              Array.isArray(item.characters) &&
+              item.characters.length > 0 && (
+                <div className="mt-10">
+                  <h2 className="text-3xl anton-sc-bold">Characters</h2>
+                  <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    {item.characters.map((character) => (
+                      <li key={character.id} className="mb-3">
+                        <h3 className="text-xl">{character.name}</h3>
+                        <Image
+                          src={character.img}
+                          alt={character.name}
+                          width={500}
+                          height={500}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             {"comics" in item &&
               Array.isArray(item.comics) &&
               item.comics.length > 0 && (
@@ -56,7 +77,12 @@ const DetailsSection = ({ id }: { id: string }) => {
                       </li>
                     ))}
                   </ul>
-                  <Link href={item.comicsUrl as string} target="_blank">
+                  <Link
+                    href={
+                      item.comicsUrl || item.detailUrl || item.wikiUrl || ""
+                    }
+                    target="_blank"
+                  >
                     <Button>Read more comics</Button>
                   </Link>
                 </div>

@@ -2,8 +2,8 @@ import { ICharacter, IComic, IDataMarvel, ISeries } from "@/interfaces/data";
 import { getMarvelId } from "@/lib/marvel";
 import {
   charactersDetailsResponse,
-  comicsResponse,
-  seriesResponse,
+  comicsDetailsResponse,
+  seriesDetailsResponse,
 } from "@/utils/responseFront";
 import { useQuery } from "@tanstack/react-query";
 
@@ -28,18 +28,14 @@ const useDataMarvelDetails = (selectedCategory: string, id: string) => {
       }
 
       if (selectedCategory === "comics") {
-        const comic = comicsResponse(results as IComic[]);
+        const comic = await comicsDetailsResponse(results as IComic[]);
+        console.log("comic", comic);
+
         return { ...data, results: comic };
       }
 
       if (selectedCategory === "series") {
-        const serie = seriesResponse(
-          (results as ISeries[]).filter(
-            (item) =>
-              typeof item.title === "string" &&
-              !item.title.includes("Star Wars")
-          )
-        );
+        const serie = await seriesDetailsResponse(results as ISeries[]);
         return { ...data, results: serie };
       }
 

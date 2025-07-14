@@ -71,7 +71,7 @@ export const charactersDetailsResponse = async (characters: ICharacter[]) => {
       const [
         comics,
         series,
-        //  events,stories
+        //  events,
       ] = await Promise.all([
         getMarvelDetails({
           category: "characters",
@@ -83,17 +83,11 @@ export const charactersDetailsResponse = async (characters: ICharacter[]) => {
           id: character.id.toString(),
           categoryDetails: "series",
         }),
-        getMarvelDetails({
-          category: "characters",
-          id: character.id.toString(),
-          categoryDetails: "events",
-        }),
-
-        getMarvelDetails({
-          category: "characters",
-          id: character.id.toString(),
-          categoryDetails: "stories",
-        }),
+        // getMarvelDetails({
+        //   category: "characters",
+        //   id: character.id.toString(),
+        //   categoryDetails: "events",
+        // }),
       ]);
 
       return {
@@ -111,13 +105,11 @@ export const charactersDetailsResponse = async (characters: ICharacter[]) => {
         comics: comicsResponse(
           (comics && comics.data.results ? comics.data.results : []) as IComic[]
         ),
-        //  events,
         series: seriesResponse(
           (series && series.data.results
             ? series.data.results
             : []) as ISeries[]
         ),
-        // stories,
         detailUrl:
           character.urls?.find((url) => url.type === "detail")?.url || "",
         wikiUrl: character.urls?.find((url) => url.type === "wiki")?.url || "",
@@ -128,4 +120,94 @@ export const charactersDetailsResponse = async (characters: ICharacter[]) => {
   );
 
   return charactersFront;
+};
+
+export const comicsDetailsResponse = async (comics: IComic[]) => {
+  const comicsFront = await Promise.all(
+    comics.map(async (comic): Promise<IComicFront> => {
+      const [characters] = await Promise.all([
+        getMarvelDetails({
+          category: "comics",
+          id: comic.id.toString(),
+          categoryDetails: "characters",
+        }),
+      ]);
+
+      return {
+        id: comic.id,
+        name: comic.title,
+        description:
+          comic.description === "" || comic.description === null
+            ? "Comic without description"
+            : comic.description,
+        modified: comic.modified,
+        pageCount: comic.pageCount,
+        img: comic.thumbnail.path + "." + comic.thumbnail.extension,
+        urlId: comic.resourceURI,
+        favorite: false,
+        category: "comics",
+        characters: charactersResponse(
+          (characters && characters.data.results
+            ? characters.data.results
+            : []) as ICharacter[]
+        ),
+        detailUrl: comic.urls?.find((url) => url.type === "detail")?.url || "",
+        wikiUrl: comic.urls?.find((url) => url.type === "wiki")?.url || "",
+        comicsUrl:
+          comic.urls?.find((url) => url.type === "comiclink")?.url || "",
+      };
+    })
+  );
+  console.log("comicsFront", comicsFront);
+
+  return comicsFront;
+};
+
+export const seriesDetailsResponse = async (series: ISeries[]) => {
+  const seriesFront = await Promise.all(
+    series.map(async (serie): Promise<ISeriesFront> => {
+      const [characters, comics] = await Promise.all([
+        getMarvelDetails({
+          category: "series",
+          id: serie.id.toString(),
+          categoryDetails: "characters",
+        }),
+        getMarvelDetails({
+          category: "series",
+          id: serie.id.toString(),
+          categoryDetails: "comics",
+        }),
+      ]);
+
+      return {
+        id: serie.id,
+        name: serie.title,
+        description:
+          serie.description === "" || serie.description === null
+            ? "Comic without description"
+            : serie.description,
+        modified: serie.modified,
+        startYear: serie.startYear,
+        endYear: serie.endYear,
+        img: serie.thumbnail.path + "." + serie.thumbnail.extension,
+        urlId: serie.resourceURI,
+        favorite: false,
+        category: "series",
+        characters: charactersResponse(
+          (characters && characters.data.results
+            ? characters.data.results
+            : []) as ICharacter[]
+        ),
+        comics: comicsResponse(
+          (comics && comics.data.results ? comics.data.results : []) as IComic[]
+        ),
+        detailUrl: serie.urls?.find((url) => url.type === "detail")?.url || "",
+        wikiUrl: serie.urls?.find((url) => url.type === "wiki")?.url || "",
+        comicsUrl:
+          serie.urls?.find((url) => url.type === "comiclink")?.url || "",
+      };
+    })
+  );
+
+  return seriesFront;
 };
