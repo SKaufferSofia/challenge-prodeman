@@ -4,6 +4,7 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { CarouselCardProps } from "@/interfaces/ui";
+import { SpinerImg } from "../UI/Spiner";
 
 export const itemVariants = {
   hidden: { y: 20, opacity: 0 },
@@ -20,6 +21,7 @@ export const CarouselCard = ({ cardsCarousel, onClick }: CarouselCardProps) => {
   const [relatedIndex, setRelatedIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoadingImg, setIsLoadingImg] = useState(true);
 
   useEffect(() => {
     const updateVisibleCards = () => {
@@ -80,11 +82,13 @@ export const CarouselCard = ({ cardsCarousel, onClick }: CarouselCardProps) => {
               onClick={onClick ? () => onClick(relatedItem.id) : undefined}
             >
               <div className={`relative h-64 rounded-lg overflow-hidden`}>
+                {isLoadingImg && <SpinerImg />}
                 <Image
                   src={relatedItem.image as string}
                   alt={relatedItem.title}
                   fill
                   className="object-cover"
+                  onLoad={() => setIsLoadingImg(false)}
                 />
               </div>
               <p className="mt-2 text-sm font-medium">{relatedItem.title}</p>

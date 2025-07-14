@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { motion } from "framer-motion";
-import { Spiner } from "@/components/UI/Spiner";
+import { Spiner, SpinerImg } from "@/components/UI/Spiner";
 import { formatoDeFechaYHora } from "@/utils/date";
 import { FaArrowLeft, FaHeart } from "react-icons/fa";
 import { useFavorites } from "@/context/favoritesContext";
@@ -14,6 +14,7 @@ import { CarouselCard, itemVariants } from "@/components/Animations/Carousels";
 import CoverflowCarousel from "@/components/Animations/CarouselCoverflow";
 
 const DetailsSection = ({ id }: { id: string }) => {
+  const [isLoadingImg, setIsLoadingImg] = React.useState(true);
   const router = useRouter();
   const { toggleFavorite, isFavorite } = useFavorites();
   const searchParams = useSearchParams();
@@ -72,11 +73,13 @@ const DetailsSection = ({ id }: { id: string }) => {
                   Go Back
                 </Link>
                 <div className="relative h-[480px] rounded-lg overflow-hidden">
+                  {isLoadingImg && <SpinerImg />}
                   <Image
                     src={item.img}
                     alt={item.name}
                     fill
                     className="object-contain"
+                    onLoad={() => setIsLoadingImg(false)}
                   />
                 </div>
               </motion.div>
