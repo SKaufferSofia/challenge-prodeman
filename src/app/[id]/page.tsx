@@ -1,8 +1,15 @@
+"use client";
 import { Spiner } from "@/components/UI/Spiner";
 import DetailsSection from "@/components/View/Sections/DetailsSection";
-import React, { Suspense } from "react";
+import { Suspense, use } from "react";
 
-const DetailsPage = ({ params }: { params: { id: string } }) => {
+// Este tipo viene de next y asegura compatibilidad con rutas dinámicas
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
+
+const DetailsPage = ({ params }: PageProps) => {
+  const { id } = use(params);
   return (
     <Suspense
       fallback={
@@ -11,7 +18,7 @@ const DetailsPage = ({ params }: { params: { id: string } }) => {
         </div>
       }
     >
-      <DetailsSection id={params.id} />
+      <DetailsSection id={id} />
     </Suspense>
   );
 };

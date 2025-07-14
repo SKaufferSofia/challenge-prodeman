@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const usePageCategory = () => {
+const usePageCategory = ({ section }: { section: string }) => {
   const [page, setPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState("characters");
+  const [selectedCategory, setSelectedCategory] = useState(section);
 
   return { page, setPage, selectedCategory, setSelectedCategory };
 };

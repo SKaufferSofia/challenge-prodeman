@@ -16,13 +16,16 @@ import {
 } from "@/utils/utils";
 import HeroSection from "../Sections/HeroSection";
 import useFilterImgNotFound from "@/hooks/useFilterImgNotFound";
+import { useSearchParams } from "next/navigation";
 
 const HomeView = () => {
   const { search, handleChangeSearch } = useSearch();
+  const searchParams = useSearchParams();
+  const section = searchParams.get("section");
 
   const { limit, handleChangeLimit } = useLimitView();
   const { page, setPage, selectedCategory, setSelectedCategory } =
-    usePageCategory();
+    usePageCategory({ section: section || "characters" });
 
   const { isError, isLoading, data, totalPages } = useDataMarvel(
     search,

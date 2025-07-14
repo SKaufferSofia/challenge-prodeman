@@ -37,3 +37,12 @@ export interface ISelectProps {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
 }
+
+export interface CarouselCardProps {
+  cardsCarousel: {
+    id: string;
+    image: string;
+    title: string;
+  }[];
+  onClick?: (id: string) => void;
+}

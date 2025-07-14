@@ -97,6 +97,11 @@ export const CardsComponent = ({
           >
             <FaHeart className="h-5 w-5" />
           </Button>
+          <Link href={{ pathname: `/${id}`, query: { section: category } }}>
+            <Button className=" p-2 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite ">
+              See more
+            </Button>
+          </Link>
         </div>
       </div>
     </motion.div>

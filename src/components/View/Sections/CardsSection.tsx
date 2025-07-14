@@ -60,7 +60,7 @@ const CardsSection = ({
             type="button"
             className="md:w-1/5 p-2 font-semibold bg-redPrimary dark:bg-redPrimary-dark text-secondaryWhite "
           >
-            <Link href={{ pathname: "/", query: { section: "home" } }}>
+            <Link href={{ pathname: "/", query: { section: sectionId } }}>
               Add Favorites
             </Link>
           </Button>

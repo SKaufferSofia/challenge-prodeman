@@ -1,4 +1,12 @@
-import { ICharacter, IComic, IDataMarvel, ISeries } from "@/interfaces/data";
+import {
+  ICharacter,
+  ICharacterFront,
+  IComic,
+  IComicFront,
+  IDataMarvel,
+  ISeries,
+  ISeriesFront,
+} from "@/interfaces/data";
 import { getMarvel } from "@/lib/marvel";
 import {
   charactersResponse,
@@ -66,10 +74,10 @@ const useDataMarvel = (
 
       return {
         ...data,
-        results: (data && data.results ? data.results : []) as
-          | ICharacter[]
-          | IComic[]
-          | ISeries[],
+        results: (data && data.results ? data.results : []) as unknown as
+          | ICharacterFront[]
+          | IComicFront[]
+          | ISeriesFront[],
       };
     },
     enabled: !!selectedCategory && !!limit && !!page,

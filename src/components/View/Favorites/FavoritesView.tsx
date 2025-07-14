@@ -17,12 +17,15 @@ import {
 } from "@/utils/utils";
 import useScrollToSection from "@/hooks/useScrollToSection";
 import useFilterImgNotFound from "@/hooks/useFilterImgNotFound";
+import { useSearchParams } from "next/navigation";
 
 const FavoritesView = () => {
+  const searchParams = useSearchParams();
+  const section = searchParams.get("section");
   useScrollToSection();
   const { favorites, isFavorite, toggleFavorite } = useFavorites();
   const { page, setPage, selectedCategory, setSelectedCategory } =
-    usePageCategory();
+    usePageCategory({ section: section || "characters" });
   const { search, handleChangeSearch } = useSearch();
   const { limit, handleChangeLimit } = useLimitView();
 
