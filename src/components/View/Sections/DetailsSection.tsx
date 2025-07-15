@@ -53,7 +53,7 @@ const DetailsSection = ({ id }: { id: string }) => {
           >
             <motion.div
               variants={containerVariants}
-              className="absolute inset-0 -z-20 w-full h-screen rounded-lg overflow-hidden brightness-[0.2]"
+              className="absolute inset-0 -z-20 w-full h-screen brightness-[0.2]"
               style={{
                 backgroundImage: `url(${item.img})`,
                 backgroundSize: "cover",
@@ -84,20 +84,20 @@ const DetailsSection = ({ id }: { id: string }) => {
                 </div>
               </motion.div>
               <div className="space-y-6 mt-10">
-                <div className="text-sm text-secondaryWhite uppercase tracking-wide">
+                <div className="text-sm lg:text-secondaryWhite uppercase tracking-wide">
                   {item.category} -{" "}
                   {formatoDeFechaYHora(new Date(item.modified))}
                 </div>
                 <motion.h1
                   variants={itemVariants}
-                  className="text-4xl text-secondaryWhite lg:text-6xl font-bold leading-tight"
+                  className="text-4xl lg:text-secondaryWhite lg:text-6xl font-bold leading-tight"
                 >
                   {item.name}
                 </motion.h1>
 
                 <motion.p
                   variants={itemVariants}
-                  className="text-lg text-secondaryWhite/70 leading-relaxed"
+                  className="text-lg lg:text-secondaryWhite/70 leading-relaxed"
                 >
                   {item.description}
                 </motion.p>
@@ -124,7 +124,7 @@ const DetailsSection = ({ id }: { id: string }) => {
                     >
                       <FaHeart className="h-5 w-5" />
                     </Button>
-                    <span className="text-secondaryWhite/80">
+                    <span className="lg:text-secondaryWhite/80">
                       Add to Favorites
                     </span>
                   </div>

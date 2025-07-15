@@ -24,20 +24,20 @@ const CoverflowCarousel = ({ cardsCarousel, onClick }: CarouselCardProps) => {
 
   return (
     <div className="w-full relative flex flex-col space-y-4">
-      <div className="flex items-stretch justify-between mb-6">
+      <div className="flex items-stretch justify-between mb-6 border-b border-textPrimary/30 pb-5 dark:border-gray-600">
         <h2 className="text-2xl">Related Content</h2>
-        <div className="flex gap-3">
+        <div className="flex gap-3 ">
           <Button
             onClick={prev}
             disabled={activeIndex === 0}
-            className="cursor-pointer rounded-full p-2 text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
+            className="cursor-pointer rounded-full p-2 text-redPrimary hover:text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
           >
             <BiChevronLeft className="h-8 w-8" />
           </Button>
           <Button
             onClick={next}
             disabled={activeIndex === cardsCarousel.length - 1}
-            className="cursor-pointer rounded-full p-2 text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
+            className="cursor-pointer rounded-full p-2  text-redPrimary hover:text-textPrimary-dark transition-all hover:bg-redPrimary  disabled:opacity-30 disabled:hover:bg-transparent"
           >
             <BiChevronRight className="h-8 w-8" />
           </Button>

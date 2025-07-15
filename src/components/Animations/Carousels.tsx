@@ -39,13 +39,13 @@ export const CarouselCard = ({ cardsCarousel, onClick }: CarouselCardProps) => {
 
   return (
     <motion.div variants={itemVariants} className="mb-12" ref={containerRef}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 border-b border-textPrimary/30 pb-5 dark:border-gray-600">
         <h2 className="text-2xl">Related Content</h2>
         <div className="flex gap-3">
           <Button
             onClick={() => setRelatedIndex(Math.max(0, relatedIndex - 1))}
             disabled={relatedIndex === 0}
-            className="cursor-pointer rounded-full p-2 text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
+            className="cursor-pointer rounded-full p-2 text-redPrimary hover:text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
           >
             <BiChevronLeft className="h-8 w-8" />
           </Button>
@@ -55,7 +55,7 @@ export const CarouselCard = ({ cardsCarousel, onClick }: CarouselCardProps) => {
                 Math.min(prev + 1, cardsCarousel.length - visibleCards)
               )
             }
-            className="cursor-pointer rounded-full p-2 text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
+            className="cursor-pointer rounded-full p-2 text-redPrimary hover:text-textPrimary-dark transition-all hover:bg-redPrimary disabled:opacity-30 disabled:hover:bg-transparent"
             disabled={relatedIndex >= cardsCarousel.length - visibleCards}
           >
             <BiChevronRight className="h-8 w-8" />
